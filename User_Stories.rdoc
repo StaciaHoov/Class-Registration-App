@@ -1,54 +1,53 @@
-USER STORIES
+USER STORIES  
 	
-1.  	As a new User, I want to Sign Up to the app from the Welcome page with my name, email, phone number,  password, and role (parent, student)	
-		**Difficulty = 3**  
-		**Milestone = User sign up**  
-		**Tasks:**  
-			Set up Devise 				
-			Generate User Model (attributes: name:string, email:string, phone number: string, password:string, role:string), has_many :students.				
-			Define User role (parent, student, admin)				
-			radio button for parent or student (older)				
+1. As a new User, I want to Sign Up to the app from the Welcome page with my name, email, phone number,  password, and role (parent, student)  	
+**Difficulty = 3**    
+**Milestone = User sign up**    
+**Tasks:**    
+Set up Devise   				
+Generate User Model (attributes: name:string, email:string, phone number: string, password:string, role:string), has_many :students.  				
+Define User role (parent, student, admin)  				
+radio button for parent or student (older)  				
 
-2.  	As a Parent User, I want to sign my children up as students in the app using my name, student name, and their age-group.	
+2. As a Parent User, I want to sign my children up as students in the app using my name, student name, and their age-group.  
+**Difficulty =  3**    	
+**Milestone = Add new students**     
+**Tasks:**    
+Generate Student Model (attributes: User id:integer, name:string, age-group:string),       			
+Student object (belongs to :User, has many courses through registration)    				
+Student Controller w/ new, create, edit, and delete methods    				
+Form_for new students (partial)    				
 
-  **Difficulty =  3**  	
-		**Milestone = Add new students**   
-		**Tasks:**  
-			Generate Student Model (attributes: User id:integer, name:string, age-group:string), 			
-			Student object (belongs to :User, has many courses through registration)				
-			Student Controller w/ new, create, edit, and delete methods				
-			Form_for new students (partial)				
-
-3.	As an Admin User, I want to input new courses for the current session that include the time block, age group, teacher, description, max students, and fee, if any. 	
-		**Difficulty = 3**  
-		**Milestone = Admin course input**   
-		**Tasks:**  
-			Course model (user_id: integer, title: string, description: string, time block: integer, age group: integer, max students: integer, fee: integer, session: integer)				
-			Course Controller w/CRUD				
-			New course view with form for 				
+3. As an Admin User, I want to input new courses for the current session that include the time block, age group, teacher, description, max students, and fee, if any.   	
+**Difficulty = 3**    
+**Milestone = Admin course input**     
+**Tasks:**    
+Course model (user_id: integer, title: string, description: string, time block: integer, age group: integer, max students: integer, fee: integer, session: integer)  				
+Course Controller w/CRUD  				
+New course view with form    				
 							
 
-4.	As a Parent or Student User, I want to view the course offerings and all associated information for the current session, including current capacity of each course. 	
-		**Difficulty = 3**  	
-		**Milestone = User view of course offerings**  
-		**Tasks:**   
-			Course Index view for current session. Group by age-group and time-block				
-			include 'current capacity' that is updated after each registration				
+4. As a Parent or Student User, I want to view the course offerings and all associated information for the current session, including current capacity of each course.   	
+**Difficulty = 3**    	
+**Milestone = User view of course offerings**    
+**Tasks:**     
+Course Index view for current session. Group by age-group and time-block  				
+include 'current capacity' that is updated after each registration  				
 							
 
-5.	As a Parent or Student User, I want to register for courses. (class capacities should update upon registration submittal.)  
-		**Difficulty = 4**  	
-		**Milestone = User course registration**  
-		**Tasks:**  
-			Registration model (student id, course id)				
-			Registration Controller w/CRUD 				
-			New Registration view with partial for adding new students				
+5. As a Parent or Student User, I want to register for courses. (class capacities should update upon registration submittal.)    
+**Difficulty = 4**    	
+**Milestone = User course registration**    
+**Tasks:**    
+Registration model (student id, course id)  				
+Registration Controller w/CRUD   				
+New Registration view with partial for adding new students  				
 
-6.	As a registered User, I want to visit my Account page to review and edit information on my account. Editable info includes:	User info, Student info, and course info   
-		**Difficulty = 3**  	
-		**Milestone = User account page**  
-		**Tasks:**  
-			Account page view with summary of info and:				
-			Link to Devise edit_registration form				
-			Links to edit Students form				
-			Link to course registration edit form				
+6. As a registered User, I want to visit my Account page to review and edit information on my account. Editable info includes:	User info, Student info, and course info     
+**Difficulty = 3**    	
+**Milestone = User account page**    
+**Tasks:**    
+Account page view with summary of info and:  	  			
+Link to Devise edit_registration form   				
+Links to edit Students form    			
+Link to course registration edit form    				
