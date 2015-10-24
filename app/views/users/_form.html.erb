@@ -1,0 +1,5 @@
+<div class="students">
+    <%= simple_fields_for :students do |student| %>
+        <%= render 'student_fields', :f => student %>
+    <% end %>
+</div>

@@ -1,0 +1,11 @@
+<div class="nested-fields">
+    <div class="form-field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    <div class="form-field">
+        <%= f.label :age_group %>
+        <%= f.collection_radio_buttons :age_group,  [[1, 'Young'] ,[2, 'Middle'], [3, 'Older']], :first, :last %> 
+    </div>
+    <%= link_to_remove_association "Remove student", f %><br />
+</div>

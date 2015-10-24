@@ -1,0 +1,10 @@
+<% if current_user %>
+    <h1>Student Sign Up</h1>
+    <p>This form will allow you to sign up your children or yourself (older students) as Students on the Account of the person currently signed in. 
+    You will have an opportunity to view and enroll in classes from the Registration menu tab.</p>
+    
+    <%= render partial: 'users/form' %>
+    
+<% else %>
+   <h1>To Sign Up Students, please Log In to your Account.</h1> 
+<% end %>

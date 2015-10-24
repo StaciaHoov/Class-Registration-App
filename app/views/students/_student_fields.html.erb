@@ -1,0 +1,8 @@
+<div id='nested-fields'>
+    <%= simple_form_for @user do |f| %>
+        <%= f.input :name, label: "Student's Name", placeholder: "First name  Last name", error: 'Username is mandatory, please specify one' %>
+        <h4> Age Group </h4><%=f.collection_radio_buttons :age_group,  [[1, 'Young'] ,[2, 'Middle'], [3, 'Older']], :first, :last %>
+        <%= f.button :submit %>
+        <%= link_to_remove_association "Remove Student", f %>
+    <% end %>
+</div>
