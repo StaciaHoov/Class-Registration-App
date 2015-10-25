@@ -23,11 +23,11 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
       if @course.save
-        flash[:notice] = 'Course was successfully created.' 
+        redirect_to @course 
       else
         flash[:error] = "There was a problem saving that course. Please try again."
       end
-      redirect_to @courses
+      
   end
 
   # PATCH/PUT /courses/1
@@ -44,24 +44,20 @@ class CoursesController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
-    if @course.destroy
-      redirect_to @courses
+    if @course.destroy 
+      redirect_to '/courses'
    else
       flash[:error] = "There was a problem deleting the course."
-      redirect_to @courses
+      render :show
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
       params.require(:course).permit(:user_id, :title, :description, :age_group, :time_block, :max_students, :fee)
     end

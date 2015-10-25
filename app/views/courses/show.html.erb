@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Id:</strong>
-  <%= @course.id %>
-</p>
-
-<p>
   <strong>Title:</strong>
   <%= @course.title %>
 </p>
@@ -39,7 +34,11 @@
   <strong>Fee:</strong>
   <%= @course.fee %>
 </p>
+<% if current_user.role == 'admin' %>
+  <p><strong>Delete Course?</strong>
+    <%= link_to 'Delete', [@course], method: :delete, class: 'btn btn-danger' %>
+  </p><br>
+  <%= link_to 'Edit', edit_course_path(@course) %> |
+<% end %>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %> |
-<%= link_to 'Delete', course_path(@course), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to 'Class List', courses_path %> 
