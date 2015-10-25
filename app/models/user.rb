@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          
   has_many :students
   accepts_nested_attributes_for :students, reject_if: :all_blank, allow_destroy: true
+  has_many :courses
   
   def admin?
     role == 'admin'

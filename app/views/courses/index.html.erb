@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instructor</th>
+      <th>Title</th>
+      <th>Time block</th>
+      <th>Age group</th>
+      <th>Max students</th>
+      <th>Fee</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.user.name unless course.user.nil? %></td>
+        <td><%= course.title %></td>
+        <td><%= course.time_block %></td>
+        <td><%= course.age_group %></td>
+        <td><%= course.max_students %></td>
+        <td><%= course.fee %></td>
+      
+        <td><%= link_to 'Show', course %>|</td>
+        <td><%= link_to 'Edit', edit_course_path(course) %>|</td>
+        <td><%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course', new_course_path %>

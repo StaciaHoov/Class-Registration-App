@@ -1,0 +1,17 @@
+<%= simple_form_for(@course) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user, label: "Instructor" %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :time_block, collection: ['10:00 am', '11:00 am', '1:00 pm', 'no preference'], as: :radio_buttons %><br />
+    <%= f.input :age_group, collection: ['Young group (3 - 6 yrs)', 'Middle group (7 - 10 yrs)', 'Older group (11+ yrs)'], as: :radio_buttons %>
+    <%= f.input :max_students, collection: 1..20 %>
+    <%= f.input :fee %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= @course.user.name %>
+</p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @course.id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @course.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.description %>
+</p>
+
+<p>
+  <strong>Time block:</strong>
+  <%= @course.time_block %>
+</p>
+
+<p>
+  <strong>Age group:</strong>
+  <%= @course.age_group %>
+</p>
+
+<p>
+  <strong>Max students:</strong>
+  <%= @course.max_students %>
+</p>
+
+<p>
+  <strong>Fee:</strong>
+  <%= @course.fee %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %> |
+<%= link_to 'Delete', course_path(@course), method: :delete, data: { confirm: "Are you sure?" } %>
