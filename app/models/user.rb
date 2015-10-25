@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
-  has_many :students, dependent: :destroy
+  has_many :students
+  accepts_nested_attributes_for :students, reject_if: :all_blank, allow_destroy: true
   
   def admin?
     role == 'admin'

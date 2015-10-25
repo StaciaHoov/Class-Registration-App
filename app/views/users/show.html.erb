@@ -1,0 +1,24 @@
+<h1><%= current_user.name %>'s Account</h1>
+<div>
+    <h2>User Information</h2>
+    <h4>Name:</h4><p><%= current_user.name %></p>
+    <h4>Email:</h4><p><%= current_user.email %></p>
+    <%= link_to "Edit User", edit_user_registration_path %>
+</div>
+
+<div>
+    <h2>Students</h2>
+    <ul class='list-unstyled'><% if @user.students %>
+            <% @user.students.each do |student| %>
+                <li><%= student.name %></li>
+            <% end %>
+        <% else %>
+            <p>There are no students on your account.</p>
+        <% end %>
+    </ul>
+    <%= link_to "Edit Students", edit_user_path(current_user) %>
+</div>
+
+<div>
+    <h2>Enrollment for SessionX</h2>
+</div>
