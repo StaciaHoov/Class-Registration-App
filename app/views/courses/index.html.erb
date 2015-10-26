@@ -2,7 +2,7 @@
 
 <h1>Listing Courses</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Instructor</th>
@@ -11,7 +11,8 @@
       <th>Age group</th>
       <th>Max students</th>
       <th>Fee</th>
-      <th colspan="4"></th>
+      <th>Openings</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -24,8 +25,12 @@
           <td><%= course.time_block %></td>
           <td><%= course.age_group %></td>
           <td><%= course.max_students %></td>
-          <td><%= course.fee %></td>
-          <td><%= link_to '| More info', course %></td>
+          <td><%= number_to_currency(course.fee) %></td>
+          <td><%= course.openings %></td>
+          <td><%= link_to 'More info ', course %></td>
+          <% if current_user.admin? %>
+            <td><%= link_to 'Delete', course, method: :delete %></td>
+          <% end %>
         </tr>
       <% end %>
     <% end %>

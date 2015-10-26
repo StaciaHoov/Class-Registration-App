@@ -32,7 +32,7 @@
 
 <p>
   <strong>Fee:</strong>
-  <%= @course.fee %>
+  <%= number_to_currency(@course.fee) %>
 </p>
 <% if current_user.role == 'admin' %>
   <p><strong>Delete Course?</strong>
