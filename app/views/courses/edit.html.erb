@@ -1,6 +1,8 @@
 <h1>Editing Course</h1>
 
-<%= render 'form' %>
+<%= render partial: 'form', locals: { course: @course } %>
 
+<%= link_to "Delete Class", @course, method: :delete, class:'btn btn-danger' %>
+<br><br>
 <%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Class List', courses_path %>

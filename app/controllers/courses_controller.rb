@@ -3,13 +3,15 @@ class CoursesController < ApplicationController
 
 
   def index
-    @courses = Course.all
+    @courses_by_age = Course.all.group_by(&:age_group)
+    @courses_by_age_time = @courses_by_age.map do |age_group, array_age|  
+      [age_group, array_age.group_by(&:time_block)]
+    end
+    
   end
-
 
   def show
   end
-
 
   def new
     @course = Course.new
@@ -19,13 +21,12 @@ class CoursesController < ApplicationController
   def edit
   end
 
-
   def create
     @course = Course.new(course_params)
       if @course.save
-        redirect_to @course 
+        redirect_to '/courses' 
       else
-        flash[:error] = "There was a problem saving that course. Please try again."
+        render :new
       end
       
   end

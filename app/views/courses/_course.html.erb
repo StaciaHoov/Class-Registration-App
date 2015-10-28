@@ -1,12 +1,8 @@
-<div class='panel panel-default'>
-  <div class='panel-heading'>
-    <h1>Class Listing</h1>
-  </div>
-  
-  <% @courses_by_age_time.each do |age, array_age|%>
-    <div class='panel-body'>
-      <h2> <%= age %></h2>
-      <table class='table table-responsive'>
+<% if courses %>
+  <% courses.each do |age_group, course_array_age| %>
+    <div class='table-responsive'>
+      <table class='table'>
+        <h2><%= age_group %></h2>
         <thead>
           <tr>
             <th>Instructor</th>
@@ -18,10 +14,11 @@
             <th>Openings</th>
           </tr>
         </thead>
-        
-        <% array_age.each do |time, array_time| %>
-          <tbody>
-            <% array_time.each do |course| %>
+  
+        <tbody>
+          <% course_array_age.group_by(&:time_block).each do |time_block, course| %>
+            <% course_array_time.each do |course| %>
+              
               <tr>
                 <td><%= course.user.name unless course.user.nil? %></td>
                 <td><%= course.title %></td>
@@ -30,19 +27,17 @@
                 <td><%= course.max_students %></td>
                 <td><%= number_to_currency(course.fee) %></td>
                 <td><%= course.openings %></td>
+                
                 <td><%= link_to 'More info ', course %></td>
                 <% if current_user.admin? %>
-                    <td><%= link_to "Edit", edit_course_path(course) %></td>
+                    
                     <td><%= link_to 'Delete', course, method: :delete %></td>
                 <% end %>
               </tr>
             <% end %>
-          </tbody>
-        <% end %>
+          <% end %>
+        </tbody>
       </table>
     </div>
   <% end %>
-</div>
-<br>
-  
-<%= link_to 'Add Class', new_course_path, class: 'btn btn-success' %>
+<% end %>
