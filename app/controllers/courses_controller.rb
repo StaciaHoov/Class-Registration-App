@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @courses_by_age = Course.all.group_by(&:age_group)
     @courses_by_age_time = @courses_by_age.map do |age_group, array_age|  
@@ -17,7 +16,6 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
-
   def edit
   end
 
@@ -31,8 +29,6 @@ class CoursesController < ApplicationController
       
   end
 
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
       if @course.update(course_params)
