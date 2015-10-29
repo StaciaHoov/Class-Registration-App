@@ -1,40 +1,22 @@
 <p id="notice"><%= notice %></p>
 <div class='panel panel-default'>
   <div class='panel-heading'>
-    <p>
-      <h2>Title:  <%= @course.title %></h2>
-    </p>
+    <p><h2>Title:  <%= @course.title %></h2></p>
   </div>
   
   <div class='panel-body'>
-    <p>
-      <strong>Instructor:</strong>
-      <%= @course.user.name %>
-    </p>
-    
-    <p>
-      <strong>Description:</strong>
-      <%= @course.description %>
-    </p>
-    
-    <p>
-      <strong>Time block:</strong>
-      <%= @course.time_block %>
-    </p>
-    
-    <p>
-      <strong>Age group:</strong>
-      <%= @course.age_group %>
-    </p>
-    
-    <p>
-      <strong>Max students:</strong>
-      <%= @course.max_students %>
-    </p>
-    
-    <p>
-      <strong>Fee:</strong>
-      <%= number_to_currency(@course.fee) %>
+    <p><strong>Instructor: </strong><%= @course.user.name %></p>
+    <p><strong>Description: </strong><%= @course.description %></p>
+    <p><strong>Time block: </strong><%= @course.time_block %></p>
+    <p><strong>Age group: </strong><%= @course.age_group %></p>
+    <p><strong>Max students: </strong><%= @course.max_students %></p>
+    <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p>
+    <p><strong>Enrolled Students: </strong>
+      <ul class='list-unstyled'>
+        <% @course.enrollments.each do |enrollment| %>
+          <li><%= enrollment.student.name %></li>
+        <% end %>
+      </ul>
     </p>
   </div>
 </div>

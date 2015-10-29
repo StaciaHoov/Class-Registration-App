@@ -26,9 +26,32 @@
     <div class='panel-body'>
         <h2>Teaching Classes</h2>
         <% current_user.courses.each do |course| %>
-            <p><strong>Title:  </strong><%= course.title %>, <strong>Age group:</strong> <%=course.age_group %>, <strong>Time block:</strong><%= course.time_block %> |
+            <p><strong>Title:  </strong><%= course.title %> | <strong>Age group: </strong> <%=course.age_group %> | <strong>Time block: </strong><%= course.time_block %> |
             <%= link_to "Edit", edit_course_path(course) %> |
             <%= link_to 'Delete', course, method: :delete %></p>
         <% end %>
+    </div>
+    
+    <div class='panel-body'>
+        <h2>Student Enrollments</h2>
+        <% current_user.students.each do |student| %>
+            <table class='table'>
+                <tr>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Age group</th>
+                    <th>Time block</th>
+                </tr>
+                <% student.enrollments.each do |enrollment| %>
+                    <tr>
+                        <td><%= student.name %></td>  
+                        <td><%= enrollment.course.title %></td>
+                        <td><%= enrollment.course.age_group %></td>
+                        <td><%= enrollment.course.time_block %></td>
+                    </tr>
+                <% end %>
+            </table>
+        <% end %>
+    </div>
     </div>
 </div>

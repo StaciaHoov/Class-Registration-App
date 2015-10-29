@@ -1,0 +1,6 @@
+
+<%= simple_form_for @enrollment do |f| %>
+    <%= f.association :student, include_blank: true %>
+    <%= f.association :course,  value_method: :id, include_blank: true %>  
+    <%= f.button :submit %>
+<% end %>
