@@ -1,0 +1,1 @@
+json.extract! @course, :id, :user, :id, :integer,, :title, :string,, :description, :string,, :time_block, :time,, :age_group, :string,, :max_students, :integer,, :fee, :integer,, :session, :date, :created_at, :updated_at

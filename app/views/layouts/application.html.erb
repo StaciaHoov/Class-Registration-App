@@ -11,8 +11,8 @@
     <div class="container">
       <ul class="nav nav-tabs">
         <li><%= link_to "Welcome", root_path %></li>
-        <li>Registration</li>
         <% if current_user %>
+          <li><%= link_to "Planning", courses_path %></li>
           <li><%= link_to "My Account", user_path(current_user) %></li>
         <% end %>
         
@@ -26,7 +26,7 @@
               <span class="glyphicon glyphicon-log-out"></span>
             <% end %>
           <% else %>
-            <%= link_to new_registration_path, class: 'btn btn-primary btn-sm' do %> 
+            <%= link_to new_user_registration_path, class: 'btn btn-primary btn-sm' do %> 
               <span class="glyphicon glyphicon-pencil"></span>
             <% end %>
              <%= link_to new_user_session_path, class: 'btn btn-primary btn-sm' do %>
@@ -52,7 +52,7 @@
           <%= flash[:alert] %>
         </div>
       <% end %>
-      
+      <br>
       <%= yield %>
       
     </div>

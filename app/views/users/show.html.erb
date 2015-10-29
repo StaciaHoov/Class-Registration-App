@@ -1,24 +1,34 @@
-<h1><%= current_user.name %>'s Account</h1>
-<div>
-    <h2>User Information</h2>
-    <h4>Name:</h4><p><%= current_user.name %></p>
-    <h4>Email:</h4><p><%= current_user.email %></p>
-    <%= link_to "Edit User", edit_user_registration_path %>
-</div>
 
-<div>
-    <h2>Students</h2>
-    <ul class='list-unstyled'><% if @user.students %>
+<div class='panel panel-default'>
+    <div class='panel-heading'>
+        <h1><%= current_user.name %>'s Account</h1>
+    </div>
+    <div class='panel-body'>
+        <h2>User Information</h2>
+        <p><strong>Name: </strong><%= current_user.name %></p>
+        <p><strong>Email: </strong><%= current_user.email %></p>
+        <%= link_to "Edit User", edit_user_registration_path %>
+    </div>
+    <div class='panel-body'>
+        <h2>Students</h2>
+        <% if @user.students %>
             <% @user.students.each do |student| %>
-                <li><%= student.name %></li>
+                <p><strong>Name: </strong><%= student.name %> 
+                <% if student.age_group %>,
+                    <strong>Age group: </strong><%= student.age_group %></p>
+                <% end %>
             <% end %>
         <% else %>
             <p>There are no students on your account.</p>
         <% end %>
-    </ul>
-    <%= link_to "Edit Students", edit_user_path(current_user) %>
-</div>
-
-<div>
-    <h2>Enrollment for SessionX</h2>
+        <%= link_to "Edit Students", edit_user_path(current_user) %>
+    </div>
+    <div class='panel-body'>
+        <h2>Teaching Classes</h2>
+        <% current_user.courses.each do |course| %>
+            <p><strong>Title:  </strong><%= course.title %>, <strong>Age group:</strong> <%=course.age_group %>, <strong>Time block:</strong><%= course.time_block %> |
+            <%= link_to "Edit", edit_course_path(course) %> |
+            <%= link_to 'Delete', course, method: :delete %></p>
+        <% end %>
+    </div>
 </div>
