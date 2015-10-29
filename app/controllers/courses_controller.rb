@@ -2,12 +2,9 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-    @courses_by_age = Course.all.group_by(&:age_group)
-    @courses_by_age_time = @courses_by_age.map do |age_group, array_age|  
-      [age_group, array_age.group_by(&:time_block)]
-    end
-    
+    @courses = Course.list_by_age_time
   end
+
 
   def show
   end
@@ -22,7 +19,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
       if @course.save
-        redirect_to '/courses' 
+        redirect_to courses_path 
       else
         render :new
       end
@@ -30,20 +27,20 @@ class CoursesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
-      else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
+    @course = Course.find(params[:id])
+    if @course.update_attributes(course_params)
+      flash[:notice] = "Course was successfully updated."
+      redirect_to courses_path
+    else
+      flash[:error] = "There was a problem updating course."
+      render :edit
     end
   end
 
+
   def destroy
     if @course.destroy 
-      redirect_to '/courses'
+      redirect_to courses_path
    else
       flash[:error] = "There was a problem deleting the course."
       render :show

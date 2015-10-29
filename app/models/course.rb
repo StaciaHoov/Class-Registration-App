@@ -13,4 +13,12 @@ class Course < ActiveRecord::Base
             self.max_students
         end
     end
+
+    def self.list_by_age_time
+        Course.all.group_by(&:age_group).map do |age_group, array_age|  
+            [age_group, array_age.group_by(&:time_block)]
+        end
+     
+    end
 end
+

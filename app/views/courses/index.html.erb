@@ -3,46 +3,8 @@
     <h1>Class Listing</h1>
   </div>
   
-  <% @courses_by_age_time.each do |age, array_age|%>
-    <div class='panel-body'>
-      <h2> <%= age %></h2>
-      <table class='table table-responsive'>
-        <thead>
-          <tr>
-            <th>Instructor</th>
-            <th>Title</th>
-            <th>Time block</th>
-            <th>Age group</th>
-            <th>Max students</th>
-            <th>Fee</th>
-            <th>Openings</th>
-          </tr>
-        </thead>
-        
-        <% array_age.each do |time, array_time| %>
-          <tbody>
-            <% array_time.each do |course| %>
-              <tr>
-                <td><%= course.user.name unless course.user.nil? %></td>
-                <td><%= course.title %></td>
-                <td><%= course.time_block %></td>
-                <td><%= course.age_group %></td>
-                <td><%= course.max_students %></td>
-                <td><%= number_to_currency(course.fee) %></td>
-                <td><%= course.openings %></td>
-                <td><%= link_to 'More info ', course %></td>
-                <% if current_user.admin? %>
-                    <td><%= link_to "Edit", edit_course_path(course) %></td>
-                    <td><%= link_to 'Delete', course, method: :delete %></td>
-                <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        <% end %>
-      </table>
-    </div>
-  <% end %>
+  <%= render partial: 'course', locals: { courses: @courses } %>
+  
 </div>
 <br>
-  
 <%= link_to 'Add Class', new_course_path, class: 'btn btn-success' %>
