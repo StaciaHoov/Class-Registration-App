@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'simple_form'
 gem 'cocoon'
+gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'rest_in_place'
+
 
 group :production do
   gem 'pg'

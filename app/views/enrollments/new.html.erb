@@ -1,6 +1,9 @@
 
 <%= simple_form_for @enrollment do |f| %>
     <%= f.association :student, include_blank: true %>
-    <%= f.association :course,  value_method: :id, include_blank: true %>  
+    <%= f.input :course_id, label: 'Time block: 10:00 am', collection: @courses %>
+    <%= f.input :course_id, label: 'Time block: 11:00 am', collection: Course.where(time_block: "11:00 am")  %>  
+    <%= f.input :course_id, label: 'Time block: 1:00 pm', collection: Course.where(time_block: "1:00 pm")  %>  
     <%= f.button :submit %>
 <% end %>
+

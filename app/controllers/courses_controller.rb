@@ -2,13 +2,16 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-    @courses = Course.list_by_age_time
+    @courses = Course.all
   end
 
 
   def show
     @course = Course.find(params[:id])
-    
+    respond_to do |format|
+      format.html
+      format.json {render :json => @course}
+    end
   end
 
   def new
@@ -30,13 +33,17 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(params[:id])
-    if @course.update_attributes(course_params)
-      flash[:notice] = "Course was successfully updated."
-      redirect_to courses_path
+    if @course.update_attributes!(course_params)
+      respond_to do |format|
+        format.html { redirect_to( courses_path)}
+        format.json { render :json => @course }
+      end
     else
-      flash[:error] = "There was a problem updating course."
-      render :edit
-    end
+      respond_to do |format|
+        format.html { render :action => :edit } #edit.html.erb
+        format.json { render :nothing => true }
+      end
+    end 
   end
 
 

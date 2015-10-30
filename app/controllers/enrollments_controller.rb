@@ -11,6 +11,10 @@ class EnrollmentsController < ApplicationController
 
   def new
     @enrollment = Enrollment.new
+    @courses = Course.all.group_by(&:age_group).map do |age_group, array_age|  
+      [age_group, array_age.group_by(&:time_block)]
+    end
+  
   end
 
   def edit

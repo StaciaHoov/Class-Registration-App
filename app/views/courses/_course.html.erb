@@ -1,42 +1,34 @@
-<% if courses %>
+ <table id='courses' class="stripe order-column hover" cellspacing="0" width="100%">
+
+    <thead>
+      <tr>
+        <th>Age group</th>
+        <th>Time block</th>
+        <th>Title</th>
+        <th>Instructor</th>
+        <th>Max students</th>
+        <th>Openings</th>
+        <th>Fee</th>
+        <th>More Info</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% courses.each do |course| %>
+        <tr>
+          <td><%= course.age_group %></td>
+          <td><span class="rest-in-place" data-object="course" data-attribute="time_block" data-url="<%= "/courses/#{course.id}" %>" >
+          <%= course.time_block %></span></td>
+          <td><%= course.title %></td>
+          <td><%= course.user.name %></td>
+          <td><%= course.max_students %></td>
+          <td><%= course.openings %></td>
+          <td><%= number_to_currency(course.fee) %></td>
+          <td><%= link_to 'Description ', course %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
+</table>
  
-  <% @courses.each do |age, array_age|%>
-    <div class='panel-body'>
-      <h2> <%= age %></h2>
-      <table class='table table-responsive'>
-        <thead>
-          <tr>
-            <th>Instructor</th>
-            <th>Title</th>
-            <th>Time block</th>
-            <th>Age group</th>
-            <th>Max students</th>
-            <th>Fee</th>
-            <th>Openings</th>
-          </tr>
-        </thead>
-        
-        <% array_age.each do |time, array_time| %>
-          <tbody>
-            <% array_time.each do |course| %>
-              <tr>
-                <td><%= course.user.name unless course.user.nil? %></td>
-                <td><%= course.title %></td>
-                <td><%= course.time_block %></td>
-                <td><%= course.age_group %></td>
-                <td><%= course.max_students %></td>
-                <td><%= number_to_currency(course.fee) %></td>
-                <td><%= course.openings %></td>
-                <td><%= link_to 'More info ', course %></td>
-                <% if current_user.admin? %>
-                    <td><%= link_to "Edit", edit_course_path(course) %></td>
-                    <td><%= link_to 'Delete', course, method: :delete %></td>
-                <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        <% end %>
-      </table>
-    </div>
-  <% end %>
-<% end %>
+  
