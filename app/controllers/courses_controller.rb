@@ -4,7 +4,13 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all
   end
-
+  
+  def planning
+    @tiny_courses = Course.where(age_group: 'Tiny')
+    @small_courses = Course.where(age_group: 'Small')
+    @medium_courses = Course.where(age_group: 'Medium')
+    @big_courses = Course.where(age_group: 'Big')
+  end
 
   def show
     @course = Course.find(params[:id])
@@ -21,7 +27,7 @@ class CoursesController < ApplicationController
   def edit
   end
 
-  def create
+  def create 
     @course = Course.new(course_params)
       if @course.save
         redirect_to courses_path 

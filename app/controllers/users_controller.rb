@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @students = @user.students
+
   end
+ 
   
   def edit
     @user = current_user
@@ -15,7 +17,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "There was a problem updating your account."
     end
-    redirect_to @user
+    redirect_to user_path(current_user)
   end
   
   private

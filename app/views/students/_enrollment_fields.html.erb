@@ -1,0 +1,41 @@
+
+<div class="nested-fields">
+    <div class="form-field">
+        <%= f.label :student %>
+        <%= f.text_area :student_id %>
+    </div>
+    
+    <div class="form-field">
+        <h3> 10:00 am </h3>
+        <%= collection_select :course_id, Course.order(:title),:id,:title, include_blank: true %>
+    </div>
+   
+
+    <%= link_to_remove_association "Remove Class", f %><br />
+</div>
+
+<div class="nested-fields">
+    <div class="form-field">
+        <%= f.label :student %>
+        <%= f.text_area :student_id %>
+    </div>
+     <div class="form-field">
+        <h3> 11:00 am </h3>
+        <%= f.collection_select :course_id, Course.where(time_block: '11:00 am'), :id, :title %>
+    </div>
+    
+    <%= link_to_remove_association "Remove Class", f %><br />
+</div>
+
+<div class="nested-fields">
+    <div class="form-field">
+        <%= f.label :student %>
+        <%= f.text_area :student_id %>
+    </div>
+    <div class="form-field">
+        <h3> 1:00 pm</h3>
+        <%= f.collection_select :course_id, Course.where(time_block: '1:00 pm am'), :id, :title %>
+    </div>
+    
+    <%= link_to_remove_association "Remove Class", f %><br />
+</div>

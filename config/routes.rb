@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :show]
   root to: 'welcome#index'
   get 'welcome/about'
+  get 'courses/planning'
   resources :students
   resources :courses
   resources :enrollments

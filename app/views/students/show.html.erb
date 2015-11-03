@@ -1,0 +1,11 @@
+<h1>Enroll students</h1>
+
+<%= form_for @user do |f| %>
+    <%= f.fields_for :students do |student| %>
+        <%= render "student_fields", :f => student %>
+    <% end %>
+    <div class="links">
+        <%= link_to_add_association "add student", f, :students %>
+    </div>
+    <%= f.submit %>
+<% end %>

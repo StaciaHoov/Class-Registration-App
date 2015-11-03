@@ -1,5 +1,4 @@
- <table id='courses' class="stripe order-column hover" cellspacing="0" width="100%">
-
+ <table id='all_courses' class="stripe order-column hover" cellspacing="0" width="100%">
     <thead>
       <tr>
         <th>Age group</th>
@@ -12,13 +11,11 @@
         <th>More Info</th>
       </tr>
     </thead>
-
     <tbody>
       <% courses.each do |course| %>
         <tr>
           <td><%= course.age_group %></td>
-          <td><span class="rest-in-place" data-object="course" data-attribute="time_block" data-url="<%= "/courses/#{course.id}" %>" >
-          <%= course.time_block %></span></td>
+          <td><%= course.time_block %></td>
           <td><%= course.title %></td>
           <td><%= course.user.name %></td>
           <td><%= course.max_students %></td>
@@ -28,7 +25,6 @@
         </tr>
       <% end %>
     </tbody>
-
 </table>
  
   

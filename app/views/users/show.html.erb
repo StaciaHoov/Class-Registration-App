@@ -17,14 +17,16 @@
                 <% if student.age_group %>,
                     <strong>Age group: </strong><%= student.age_group %></p>
                 <% end %>
+                <%= link_to "Enroll", edit_student_path(student.id), class:'btn btn-primary' %>
             <% end %>
         <% else %>
             <p>There are no students on your account.</p>
-        <% end %>
+        <% end %><br>
         <%= link_to "Edit Students", edit_user_path(current_user) %>
     </div>
     <div class='panel-body'>
         <h2>Teaching Classes</h2>
+
         <% current_user.courses.each do |course| %>
             <p><strong>Title:  </strong><%= course.title %> | <strong>Age group: </strong> <%=course.age_group %> | <strong>Time block: </strong><%= course.time_block %> |
             <%= link_to "Edit", edit_course_path(course) %> |
@@ -34,24 +36,26 @@
     
     <div class='panel-body'>
         <h2>Student Enrollments</h2>
-        <% current_user.students.each do |student| %>
-            <table class='table'>
-                <tr>
-                    <th>Name</th>
-                    <th>Class</th>
-                    <th>Age group</th>
-                    <th>Time block</th>
-                </tr>
+        
+        <table id='user_enrollments' class="stripe order-column hover" cellspacing="0" width="100%">
+            <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Age group</th>
+                <th>Time block</th>
+                <th>Remove Class?</th>
+            </tr>
+            <% current_user.students.each do |student| %>
                 <% student.enrollments.each do |enrollment| %>
-                    <tr>
-                        <td><%= student.name %></td>  
-                        <td><%= enrollment.course.title %></td>
-                        <td><%= enrollment.course.age_group %></td>
-                        <td><%= enrollment.course.time_block %></td>
-                    </tr>
+                <tr>
+                    <td><%= student.name %></td>  
+                    <td><%= enrollment.course.title %></td>
+                    <td><%= enrollment.course.age_group %></td>
+                    <td><%= enrollment.course.time_block %></td>
+                    <td><%= link_to "Delete", enrollment_path(enrollment.id), method: :delete %></td>
+                </tr>
                 <% end %>
-            </table>
-        <% end %>
-    </div>
+            <% end %>
+        </table>
     </div>
 </div>

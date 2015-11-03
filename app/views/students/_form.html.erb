@@ -1,0 +1,5 @@
+<div class="enrollments">
+    <%= simple_fields_for :enrollments do |enrollment| %>
+        <%= render 'enrollment_fields', :f => enrollment %>
+    <% end %>
+</div>

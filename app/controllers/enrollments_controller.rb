@@ -5,23 +5,20 @@ class EnrollmentsController < ApplicationController
     
   end
 
-
   def show
   end
 
   def new
     @enrollment = Enrollment.new
-    @courses = Course.all.group_by(&:age_group).map do |age_group, array_age|  
-      [age_group, array_age.group_by(&:time_block)]
-    end
-  
   end
 
   def edit
+    @enrollment = Enrollment.find(params[:id])
   end
 
   def create
-    @enrollment = Enrollment.new(enrollment_params)
+    @student = Student.find(params[:student_id])
+    @enrollment = @student.enrollments.build(enrollment_params)
     
     if @enrollment.save
       flash[:notice] = "Student enrolled."
@@ -32,12 +29,20 @@ class EnrollmentsController < ApplicationController
   end
 
   def update
+    @student = Student.find(params[:student_id])
+    @course = Course.find(params[:course_id])
   
   end
 
 
   def destroy
- 
+    @enrollment = Enrollment.find(params[:id])
+    if @enrollment.destroy
+      flash[:notice] = "Class removed."
+    else
+      flash[:error] = "There was an error removing that class from the schedule."
+    end
+    redirect_to :back
   end
 
   private
