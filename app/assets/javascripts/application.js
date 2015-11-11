@@ -15,6 +15,5 @@
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require cocoon
-//= require 'rest_in_place'
+//= require best_in_place
 //= require_tree .
-

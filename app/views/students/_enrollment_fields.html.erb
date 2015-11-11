@@ -1,41 +1,9 @@
 
-<div class="nested-fields">
-    <div class="form-field">
-        <%= f.label :student %>
-        <%= f.text_area :student_id %>
-    </div>
-    
-    <div class="form-field">
-        <h3> 10:00 am </h3>
-        <%= collection_select :course_id, Course.order(:title),:id,:title, include_blank: true %>
-    </div>
-   
-
-    <%= link_to_remove_association "Remove Class", f %><br />
+<div>
+    <% f.input :student_id %>
 </div>
-
-<div class="nested-fields">
-    <div class="form-field">
-        <%= f.label :student %>
-        <%= f.text_area :student_id %>
-    </div>
-     <div class="form-field">
-        <h3> 11:00 am </h3>
-        <%= f.collection_select :course_id, Course.where(time_block: '11:00 am'), :id, :title %>
-    </div>
-    
-    <%= link_to_remove_association "Remove Class", f %><br />
+    <%= f.input :course_id, label: '10:00 am', :as => :grouped_select, :collection =>  Course.where(time_block: '10:00 am').group_by(&:age_group), :group_method => :last %>
 </div>
-
-<div class="nested-fields">
-    <div class="form-field">
-        <%= f.label :student %>
-        <%= f.text_area :student_id %>
-    </div>
-    <div class="form-field">
-        <h3> 1:00 pm</h3>
-        <%= f.collection_select :course_id, Course.where(time_block: '1:00 pm am'), :id, :title %>
-    </div>
-    
+<div>
     <%= link_to_remove_association "Remove Class", f %><br />
 </div>

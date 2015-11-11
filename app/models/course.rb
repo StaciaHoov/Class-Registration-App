@@ -20,15 +20,5 @@ class Course < ActiveRecord::Base
             [age_group, array_age.group_by(&:time_block)]
         end
     end
-    
-    
-    def self.for_select
-    {
-      'Tiny'   => where(:age_group => 'tiny').map { |c| [c.id, c.name] },
-      'Small'   => where(:age_group => 'small').map { |c| [c.id, c.name] },
-      'Medium'   => where(:age_group => 'medium').map { |c| [c.id, c.name] },
-      'Big'   => where(:age_group => 'big').map { |c| [c.id, c.name] },
-    }
-    end
 end
 

@@ -1,13 +1,5 @@
 
 <%= simple_form_for @enrollment do |f| %>
-    <%= f.association :student, include_blank: true %>
-    <h2>Tiny</h2>
-    <%= f.input :course_id, label: 'Tiny: 10:00 am', collection: Course.where({time_block: "10:00 am", age_group: 'Tiny'}) %>
-    <%= f.input :course_id, label: 'Tiny: 11:00 am', collection: Course.where(time_block: "11:00 am", age_group: 'Tiny')  %>  
-    <%= f.input :course_id, label: 'Tiny: 1:00 pm', collection: Course.where(time_block: "1:00 pm", age_group: 'Tiny')  %>  
-    <h2>Medium</h2>
-    <%= f.input :course_id, label: '10:00 am', collection: Course.where(time_block: "10:00 am", age_group: 'Medium') %>
-    <%= f.input :course_id, label: '11:00 am', collection: Course.where(time_block: "11:00 am", age_group: 'Medium')  %>  
-    <%= f.input :course_id, label: '1:00 pm', collection: Course.where(time_block: "1:00 pm", age_group: 'Medium')  %>  
-    <%= f.button :submit %>
+
 <% end %>
+

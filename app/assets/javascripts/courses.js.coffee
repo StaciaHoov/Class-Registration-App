@@ -17,4 +17,5 @@ jQuery ->
         paging: false,
         searching: false
     })
+    $('.best_in_place').best_in_place()
     

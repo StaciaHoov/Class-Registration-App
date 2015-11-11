@@ -1,12 +1,13 @@
 <h1>Enroll <%= @student.name %></h1>
 
-<%= form_for @student do |f| %>
+<%= simple_form_for @student do |f| %>
     <%= f.fields_for :enrollments do |enrollment| %>
         <%= render "enrollment_fields", :f => enrollment %>
     <% end %>
+    
     <div class="links">
         <%= link_to_add_association "Add Class", f, :enrollments %>
     </div>
-    <%= f.submit %>
+    <%= f.button :submit %>
 <% end %>
 
