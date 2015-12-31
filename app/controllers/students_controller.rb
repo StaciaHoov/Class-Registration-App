@@ -46,6 +46,6 @@ class StudentsController < ApplicationController
     private
   
   def student_params
-    params.require(:student).permit(:id, :name, :age_group, enrollments_attributes: [:student_id, :course_id, :_destroy])
+    params.require(:student).permit(:id, :name, :age, enrollments_attributes: [:student_id, :course_id, :_destroy])
   end
 end

@@ -13,11 +13,8 @@
         <h2>Students</h2>
         <% if @user.students %>
             <% @user.students.each do |student| %>
-                <p><strong>Name: </strong><%= student.name %> 
-                <% if student.age_group %>,
-                    <strong>Age group: </strong><%= student.age_group %></p>
-                <% end %>
-                <%= link_to "Enroll", edit_student_path(student.id), class:'btn btn-primary' %>
+                <p><strong>Name: </strong><%= student.name %>, <strong>Age: </strong><%= student.age %>, 
+                <%= link_to "Enroll", edit_student_path(student.id), class:'btn btn-primary btn-sm' %></p>
             <% end %>
         <% else %>
             <p>There are no students on your account.</p>

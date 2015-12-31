@@ -2,7 +2,11 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-    @courses = Course.all
+    @tiny_courses = Course.where(age_group: 'Tiny')
+    @small_courses = Course.where(age_group: 'Small')
+    @medium_courses = Course.where(age_group: 'Medium')
+    @big_courses = Course.where(age_group: 'Big')
+    @adult_courses = Course.where(age_group: 'Adult')
   end
   
   def planning
@@ -10,6 +14,7 @@ class CoursesController < ApplicationController
     @small_courses = Course.where(age_group: 'Small')
     @medium_courses = Course.where(age_group: 'Medium')
     @big_courses = Course.where(age_group: 'Big')
+    @adult_courses = Course.where(age_group: 'Adult')
   end
 
   def show

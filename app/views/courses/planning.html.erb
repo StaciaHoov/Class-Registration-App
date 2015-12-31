@@ -1,11 +1,15 @@
-<h1>Proposed Classes</h1>
-<p><%=link_to "Tiny", :anchor => 'tiny_table' %> | <%=link_to "Small", :anchor => 'small_table' %>  
-  | <%=link_to "Medium", :anchor => 'medium_table' %> | <%=link_to "Big", :anchor => 'big_table' %></p>
-  <%= render partial: "courses/table", locals: {type: "tiny", collection: @tiny_courses} %>
-  <%= render partial: "courses/table", locals: {type: "small", collection: @small_courses} %>
-  <%= render partial: "courses/table", locals: {type: "medium", collection: @medium_courses} %>
-  <%= render partial: "courses/table", locals: {type: "big", collection: @big_courses} %>
-<p><%=link_to "Tiny", :anchor => 'tiny_table' %> | <%=link_to "Small", :anchor => 'small_table' %>  
-  | <%=link_to "Medium", :anchor => 'medium_table' %> | <%=link_to "Big", :anchor => 'big_table' %></p>
+<div class='panel panel-default'>
+  <div class='panel-heading'>
+    <h1>Proposed Classes - Winter 2015</h1>
+  </div>
+  
+  <div class='panel-body'>
+    <%= render partial: "courses/table", locals: {type: "tiny", collection: @tiny_courses} %>
+    <%= render partial: "courses/table", locals: {type: "small", collection: @small_courses} %>
+    <%= render partial: "courses/table", locals: {type: "medium", collection: @medium_courses} %>
+    <%= render partial: "courses/table", locals: {type: "big", collection: @big_courses} %>
+    <%= render partial: "courses/table", locals: {type: "adult", collection: @adult_courses} %>
+  </div>
+</div>
 
 

@@ -13,14 +13,16 @@
       </div>
       <div class="col-md-4">
         <h2>Getting Started</h2>
-        <p>New users can create an account. Returning users please log in.</p></br>
+        <p>If you are new, please create an account. Returning users please log in.</p></br>
         <%= link_to "Create Account", new_user_registration_path, class: 'btn btn-primary' %> or
         <%= link_to "Log In", new_user_session_path, class: 'btn btn-primary' %> 
     
       </div>
       <div class="col-md-4">
-        <h2>Planning & Registration</h2>
-        <p> </p>
+        <h2>Class Registration</h2>
+        <p>To view the current sessions class offerings, go to <%=link_to 'Class Schedule.', courses_path %> 
+        To register for courses, go to your account page (<%=link_to 'My Account', user_path(current_user) %>) and
+        add students to enroll in classes.</p>
         
       </div>
     </div>

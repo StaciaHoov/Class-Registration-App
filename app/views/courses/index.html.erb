@@ -1,10 +1,14 @@
 <div class='panel panel-default'>
   <div class='panel-heading'>
-    <h1>Class Listing</h1>
+    <h1>Current Class Offerings - Winter 2015</h1>
   </div>
-  
-  <%= render partial: 'course', locals: { courses: @courses } %>
-  
+  <div class='panel-body'>
+    <%= render partial: "courses/table_final", locals: {type: "tiny", collection: @tiny_courses} %>
+    <%= render partial: "courses/table_final", locals: {type: "small", collection: @small_courses} %>
+    <%= render partial: "courses/table_final", locals: {type: "medium", collection: @medium_courses} %>
+    <%= render partial: "courses/table_final", locals: {type: "big", collection: @big_courses} %>
+    <%= render partial: "courses/table_final", locals: {type: "adult", collection: @adult_courses} %>
+  </div>
 </div>
 <br>
-<%= link_to 'Add Class', new_course_path, class: 'btn btn-success' %>
+

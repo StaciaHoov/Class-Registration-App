@@ -4,8 +4,8 @@
         <%= f.text_field :name %>
     </div>
     <div class="form-field">
-        <%= f.label :age_group %>
-        <%= f.collection_radio_buttons :age_group,  [['Tiny', 'Tiny'],['Small', 'Small'] ,['Medium', 'Medium'], ['Big', 'Big']], :first, :last %> 
+        <%= f.label :age %>
+        <%= f.text_field :age %>
     </div>
     <%= link_to_remove_association "Remove student", f %><br />
-</div>
+</div></br></br>

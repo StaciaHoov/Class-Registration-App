@@ -5,5 +5,5 @@
     <%= f.input :course_id, label: '10:00 am', :as => :grouped_select, :collection =>  Course.where(time_block: '10:00 am').group_by(&:age_group), :group_method => :last %>
 </div>
 <div>
-    <%= link_to_remove_association "Remove Class", f %><br />
+   
 </div>

@@ -17,8 +17,8 @@
       <tbody>
         <% collection.each do |course| %>
           <tr>
-            <td><%= best_in_place course, :time_block, :as => :select, :collection => [["1", "10:00 am"], ["2", "11:00 am"], ["3", "1:00 pm"]] %></td>
-            <td><%= best_in_place course, :title, :as => :input %></td>
+            <td><%= course.time_block %></td>
+            <td><%= course.title %></td>
             <td><%= course.user.name %></td>
             <td><%= course.max_students %></td>
             <td><%= course.openings %></td>
