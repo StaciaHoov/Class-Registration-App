@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @students = @user.students
-
+   
   end
- 
+
   
   def edit
     @user = current_user
@@ -25,4 +25,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :name, students_attributes: [:id, :name, :age, :_destroy])
   end
+  
 end

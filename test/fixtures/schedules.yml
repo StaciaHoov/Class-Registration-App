@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_course_id: 1
+  second_course_id: 1
+  third_course_id: 1
+  student_id: 1
+
+two:
+  first_course_id: 1
+  second_course_id: 1
+  third_course_id: 1
+  student_id: 1

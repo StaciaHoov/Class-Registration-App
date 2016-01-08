@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'schedules/new'
+
+  get 'schedules/show'
+
+  get 'schedules/edit'
+
   devise_for :users
   resources :users, only: [:edit, :update, :show]
   root to: 'welcome#index'
@@ -7,4 +13,5 @@ Rails.application.routes.draw do
   resources :students
   resources :courses
   resources :enrollments
+  resources :schedules
 end
