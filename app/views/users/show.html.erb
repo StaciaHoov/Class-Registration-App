@@ -14,7 +14,6 @@
         <% if @user.students %>
             <% @user.students.each do |student| %>
                 <p><strong>Name: </strong><%= student.name %>, <strong>Age: </strong><%= student.age %>, 
-                <%= link_to "Enroll", new_schedule_path, class:'btn btn-primary btn-sm' %></p>
             <% end %>
         <% else %>
             <p>There are no students on your account.</p>
@@ -31,21 +30,22 @@
                 <th>Name</th>
                 <th>First Block</th>
                 <th>Second Block</th>
-                <th>Third Block </th>
-                <th>Remove Class?</th>
+                <th>Thirds Block </th>
+                <th>Change Schedule?</th>
             </tr>
             <% current_user.students.each do |student| %>
-             
-                
+                <% schedule = Schedule.where(student_id: student.id).last %>
                     <tr>
                         <td><%= student.name %></td>  
-                        <td><%=  %></td>
-                        
-                        <td><%= student.schedules.first_course_id %></td>
-                        <td><%= Schedule.where(student_id: student.id).last  %></td>
-                        <td><%=  %></td>
+                        <td><%= Course.find(schedule.first_course_id).title unless schedule.nil? %></td>
+                        <td><%= Course.find(schedule.second_course_id).title unless schedule.nil? %></td>
+                        <td><%= Course.find(schedule.third_course_id).title unless schedule.nil?  %></td>
+                        <td><% if schedule %>
+                               <%= link_to "Edit", edit_schedule_path %> 
+                            <% else %>
+                                <%= link_to "Select Classes", new_schedule_path %>
+                            <% end %></td>
                     </tr>
-               
             <% end %>
         </table>
     </div>

@@ -1,6 +1,4 @@
 class SchedulesController < ApplicationController
-  
-  
   def new
     @schedule = Schedule.new
     @user = current_user
@@ -20,7 +18,19 @@ class SchedulesController < ApplicationController
   end
   
   def edit
+    @schedule = Schedule.find(params[:id])
   end
+  
+  def update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update_attributes(schedule_params)
+      flash[:notice] = "Schedule updated."
+    else
+      flash[:danger] = "There was a problem editing the schedule. Please try again."
+    end
+    redirect_to user_path(current_user)
+  end
+  
   
   private
   
