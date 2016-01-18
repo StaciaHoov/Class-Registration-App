@@ -10,15 +10,28 @@
         <%= link_to "Edit User", edit_user_registration_path %>
     </div>
     <div class='panel-body'>
+        
         <h2>Students</h2>
-        <% if @user.students %>
-            <% @user.students.each do |student| %>
-                <p><strong>Name: </strong><%= student.name %>, <strong>Age: </strong><%= student.age %>, 
+        <table id='student_list' class="stripe order-column hover" cellspacing="0" width="50%">
+             
+                <tr>
+                    <th>Name</th>
+                    <th>Age (yrs)</th>
+                    <th>Change Students (add or edit)?</th>
+                </tr>
+                <% if @user.students %>
+                    <% @user.students.each do |student| %>
+                    <tr>
+                        <td><%= student.name %></td> 
+                        <td><%= student.age %></td>
+                        <td><%= link_to "Edit", edit_user_path(current_user) %></td>
+                    </tr>
+                <% end %><br>
+            <% else %>
+                <p>There are no students on your account. Click to 
+                <%= link_to "Add Students", edit_user_registration_path %></p>
             <% end %>
-        <% else %>
-            <p>There are no students on your account.</p>
-        <% end %><br>
-        <%= link_to "Edit Students", edit_user_path(current_user) %>
+        </table>
     </div>
    
     
@@ -30,7 +43,7 @@
                 <th>Name</th>
                 <th>First Block</th>
                 <th>Second Block</th>
-                <th>Thirds Block </th>
+                <th>Third Block </th>
                 <th>Change Schedule?</th>
             </tr>
             <% current_user.students.each do |student| %>
@@ -41,7 +54,7 @@
                         <td><%= Course.find(schedule.second_course_id).title unless schedule.nil? %></td>
                         <td><%= Course.find(schedule.third_course_id).title unless schedule.nil?  %></td>
                         <td><% if schedule %>
-                               <%= link_to "Edit", edit_schedule_path %> 
+                               <%= link_to "Edit", edit_schedule_path(schedule) %> 
                             <% else %>
                                 <%= link_to "Select Classes", new_schedule_path %>
                             <% end %></td>
@@ -51,11 +64,22 @@
     </div>
      <div class='panel-body'>
         <h2>Teaching Classes</h2>
-
-        <% current_user.courses.each do |course| %>
-            <p><strong>Title:  </strong><%= course.title %> | <strong>Age group: </strong> <%=course.age_group %> | <strong>Time block: </strong><%= course.time_block %> |
-            <%= link_to "Edit", edit_course_path(course) %> |
-            <%= link_to 'Delete', course, method: :delete %></p>
-        <% end %>
+        
+        <table id='teaching_classes' class="stripe order-column hover" cellspacing="0" width="100%">
+            <tr>
+                <th>Title</th>
+                <th>Age Group</th>
+                <th>Time Block</th>
+                <th>Change Teaching Schedule?</th>
+            </tr>
+            <% current_user.courses.each do |course| %>
+                <tr>
+                    <td><%= course.title %> </td> 
+                    <td><%=course.age_group %> </td>
+                    <td><%= course.time_block %> </td>
+                    <td><%= link_to "Edit", edit_course_path(course) %> | <%= link_to 'Delete', course, method: :delete %> </td>
+                </tr>
+            <% end %>
+        </table>
     </div>
 </div>

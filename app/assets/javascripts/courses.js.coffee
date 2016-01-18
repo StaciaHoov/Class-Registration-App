@@ -1,6 +1,7 @@
 
 jQuery ->
     $('#all_courses').dataTable();
+    
     $('#tiny_courses').dataTable({
         paging: false,
         searching: false
