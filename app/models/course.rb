@@ -4,7 +4,7 @@ class Course < ActiveRecord::Base
     has_many :schedules
     has_many :students, through: :enrollments
     
-    default_scope { order('age_group DESC','time_block ASC') } 
+    default_scope { order('time_block ASC','age_group DESC') } 
     
     validates :title, length: { maximum: 40 }, presence: true
     validates :user, presence: true
@@ -20,9 +20,16 @@ class Course < ActiveRecord::Base
         end
     end
 
+
     def self.list_by_age_time
         Course.all.group_by(&:age_group).map do |age_group, array_age|  
             [age_group, array_age.group_by(&:time_block)]
+        end
+    end
+    
+    def self.list_by_time_age
+       Course.all.group_by(&:time_block ).map do |time_group, array_time|  
+            [time_group, array_time.group_by(&:age_group)]
         end
     end
 end

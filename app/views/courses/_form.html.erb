@@ -7,7 +7,7 @@
     <%= f.input :description %>
     <%= f.input :max_students, collection: 1..20 %>
     <%= f.input :age_group, collection: ['Tiny', 'Small', 'Medium', 'Big', 'Adult'], as: :radio_buttons %></br>
-    <%= f.input :time_block, collection: [['1','10:00 am'],['2', '11:00 am'], ['3','1:00 pm']], :label_method => :last, :value_method => :first,  as: :radio_buttons  %>
+    <%= f.input :time_block, collection: [['1','First Block (10:00 am)'],['2', 'Second Block (11:00 am)'], ['3','Third Block (1:00 pm)']], :label_method => :last, :value_method => :first,  as: :radio_buttons  %>
     <%= f.input :fee, as: :currency %>
   </div>
 

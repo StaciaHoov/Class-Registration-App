@@ -1,6 +1,6 @@
 <div id="<%= type %>_table">
-    <p class = 'pull-right'><%=link_to "Tiny", :anchor => 'tiny_table' %> | <%=link_to "Small", :anchor => 'small_table' %>  
-  | <%=link_to "Medium", :anchor => 'medium_table' %> | <%=link_to "Big", :anchor => 'big_table' %> | <%=link_to "Adult", :anchor => 'adult_table' %></p>
+    <p class = 'pull-right'><small><%=link_to "Tiny", :anchor => 'tiny_table' %> | <%=link_to "Small", :anchor => 'small_table' %>  
+  | <%=link_to "Medium", :anchor => 'medium_table' %> | <%=link_to "Big", :anchor => 'big_table' %> | <%=link_to "Adult", :anchor => 'adult_table' %></small></p>
     <h2><%= type.capitalize %></h2>
     <table id="<%= type %>_courses" class="stripe order-column hover" cellspacing="0" width="100%">
       <thead>
@@ -9,7 +9,6 @@
           <th>Title</th>
           <th>Instructor</th>
           <th>Max students</th>
-          <th>Openings</th>
           <th>Fee</th>
           <th>More Info</th>
         </tr>
@@ -21,7 +20,6 @@
             <td><%= best_in_place course, :title, :as => :input %></td>
             <td><%= course.user.name %></td>
             <td><%= course.max_students %></td>
-            <td><%= course.openings %></td>
             <td><%= number_to_currency(course.fee) %></td>
             <td><%= link_to 'Description ', course %></td>
           </tr>

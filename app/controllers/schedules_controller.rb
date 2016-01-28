@@ -1,5 +1,8 @@
 class SchedulesController < ApplicationController
   def new
+    @courses_first_block = Course.where(time_block: 1)
+    @courses_second_block = Course.where(time_block: 2)
+    @courses_third_block = Course.where(time_block: 3)
     @schedule = Schedule.new
     @user = current_user
   end

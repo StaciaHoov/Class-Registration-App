@@ -1,21 +1,82 @@
-<h1>Course Sign-Up</h1>
-<%= simple_form_for @schedule do |f| %>    
-    <div class= 'col-md-8'>
-        <%= f.input :student_id, label: 'Student', :collection => @user.students %>
+<div class='panel panel-default'>
+    <div class='panel-heading'>
+        <h1>Course Sign-Up</h1> 
     </div>
-    <div class= 'col-md-8'>
-        <%= f.input :first_course_id, label: 'First Block: 10:00 am', :as => :grouped_select, 
-        :collection =>  Course.where(time_block: '1').group_by(&:age_group), :group_method => :last %>
-    </div>
-    <div class= 'col-md-8'>
-       <%= f.input :second_course_id, label: 'Second Block: 11:00 am', :as => :grouped_select, 
-       :collection =>  Course.where(time_block: '2').group_by(&:age_group), :group_method => :last %>
-    </div>
-    <div class= 'col-md-8'>
-       <%= f.input :third_course_id, label: 'Third Block: 1:00 pm', :as => :grouped_select, 
-       :collection =>  Course.where(time_block: '3').group_by(&:age_group), :group_method => :last %>
-    </div>
-    <div>
-      <%= f.button :submit %>
-    </div>
-<% end %>
+                
+    <div class='panel-body'>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="preview">Enrollment Form</h3>
+                <%= simple_form_for @schedule do |f| %>   
+                <div >
+                    <%= f.input :student_id, label: 'Student', :collection => @user.students %>
+                        <%= f.input :first_course_id, label: 'First Block: 10:00 am', :as => :grouped_select, 
+                        :collection =>  Course.where(time_block: '1').group_by(&:age_group), :group_method => :last %>
+                        <%= f.input :second_course_id, label: 'Second Block: 11:00 am', :as => :grouped_select, 
+                       :collection =>  Course.where(time_block: '2').group_by(&:age_group), :group_method => :last %>
+                       <%= f.input :third_course_id, label: 'Third Block: 1:00 pm', :as => :grouped_select, 
+                       :collection =>  Course.where(time_block: '3').group_by(&:age_group), :group_method => :last %>
+                        <%= f.button :submit, class: 'btn btn-primary btn-sm' %>
+                    <% end %>
+                </div>
+            </div>
+                    
+            <div class="col-md-6">
+               <h3 class="preview">Course Reference</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered .table-condensed">
+                        <tr>
+                            <th>First Block</th>
+                            <th>Age</th>
+                            <th>Details</th>
+                        </tr>
+                        <% Course.where(time_block: 1).each do |course| %>
+                        <tr>
+                            <td><%= course.title %></td>
+                            <td><%= course.age_group %></td>
+                            <td><%= link_to 'Details', course %></td>
+                        </tr>
+                        <% end %>
+                    </table>
+                </div> 
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered .table-condensed">
+                        <tr>
+                            <th>Second Block</th>
+                            <th>Age</th>
+                            <th>Details</th>
+                        </tr>
+                        <% Course.where(time_block: 2).each do |course| %>
+                        <tr>
+                            <td><%= course.title %></td>
+                            <td><%= course.age_group %></td>
+                            <td><%= link_to 'Details', course %></td>
+                        </tr>
+                        <% end %>
+                    </table>
+                </div> 
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered .table-condensed">
+                        <tr>
+                            <th>Third Block</th>
+                            <th>Age</th>
+                            <th>Details</th>
+                        </tr>
+                        <% Course.where(time_block: 3).each do |course| %>
+                        <tr>
+                            <td><%= course.title %></td>
+                            <td><%= course.age_group %></td>
+                            <td><%= link_to 'Details', course %></td>
+                        </tr>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+
+
+

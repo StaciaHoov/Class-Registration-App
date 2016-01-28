@@ -22,7 +22,7 @@
             <td><%= course.user.name %></td>
             <td><%= course.max_students %></td>
             <td><% if course.openings === 0 %>
-                  <small>Sorry, Course Full. </br> Go on <%=link_to 'waiting list?' %></small>
+                  <small>Class Full. <%=link_to 'Waiting list?' %></small>
                 <% else %>
                   <%= course.openings %>
                 <% end %></td>
