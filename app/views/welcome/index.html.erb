@@ -1,28 +1,26 @@
 <br>
-
-<div class="group_heading">
-    <h1>Waldo Homeschool Organization - WHO</h1>
-</div>
-
-
-<div class="jumbotron">    
-    <div class="row">
-      <div class="col-md-4">
-        <h2>About this Site</h2>
-        <p>This is the class planning and registration application for the Belfast Area Tuesday Homeschool Cooperative! </p>
-      </div>
-      <div class="col-md-4">
-        <h2>Getting Started</h2>
-        <p>If you are new, please create an account. Returning users please log in.</p></br>
-        <%= link_to "Create Account", new_user_registration_path, class: 'btn btn-primary' %> or
-        <%= link_to "Log In", new_user_session_path, class: 'btn btn-primary' %> 
+<div class="welcome-content">
+  <div class="group_heading">
+      <h1>Waldo Homeschool Organization (WHO)</h1>
     
-      </div>
-      <div class="col-md-4">
-        <h2>Class Registration</h2>
-        <p>To view the current sessions class offerings, go to <%=link_to 'Class Schedule.', courses_path %> 
-        To register for courses, go to your account page </p>
-        
-      </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <h2>About this Site</h2>
+      <p>This is the class planning and registration application for the Belfast Area Tuesday Homeschool Cooperative! </p>
     </div>
+    <div class="col-md-4">
+      <h2>Getting Started</h2>
+      <p>If you are new, please create an account. Returning users please log in.</p></br>
+      <%= link_to "Create Account", new_user_registration_path, class: 'btn btn-primary' %> or
+      <%= link_to "Log In", new_user_session_path, class: 'btn btn-primary' %> 
+  
+    </div>
+    <div class="col-md-4">
+      <h2>Class Registration</h2>
+      <p>To view the current sessions class offerings, go to <%=link_to 'Class Schedule.', courses_path %> 
+      To register for courses, go to your account page </p>
+    </div>
+  </div>
 </div>

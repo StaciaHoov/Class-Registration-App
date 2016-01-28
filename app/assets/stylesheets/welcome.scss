@@ -6,8 +6,19 @@
 }
 
 .jumbotron h1 {
-    font-size: 48px;
+  font-size: 40px;
+  padding: 30px 60px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
+.welcome-content {
+    text-align: center;
+}
+
+.welcome-content h2{
+    text-align: center;
+}
+
 
 .jumbotron p {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -18,4 +29,8 @@
 .group_heading {
     font-size: 72px;
     margin-bottom: 60px;
+}
+
+.jumbotron {
+    background-color: #adb; // or rgba(236, 122, 9, 0.54);
 }

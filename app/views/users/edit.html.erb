@@ -1,11 +1,21 @@
-<h1>Add students</h1>
-
-<%= form_for @user do |f| %>
-    <%= f.fields_for :students do |student| %>
-        <%= render "student_fields", :f => student %>
-    <% end %>
-    <div class="links">
-        <%= link_to_add_association "add student", f, :students %>
+<div class="panel panel-default"       >
+    <div class="panel-heading">
+        <h1>Add students</h1>
     </div>
-    <%= f.submit %>
-<% end %>
+    <div class="panel-body">
+        <%= form_for @user do |f| %>
+            <%= f.fields_for :students do |student| %>
+                <%= render "student_fields", :f => student %>
+            <% end %>
+            <div class="links">
+                <%= link_to_add_association "Add student", f, :students %>
+            </div>
+            <%= f.submit %>
+        <% end %>
+    </div>
+</div>
+        
+        
+        
+        
+        

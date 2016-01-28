@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Waldo Homeschool Organization</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <title>Waldo Homeschool Organization</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <%= csrf_meta_tags %>
+  </head>
   <body>
     <div class="container">
       <ul class="nav nav-tabs">
@@ -54,7 +55,11 @@
         </div>
       <% end %>
       <br>
-      <%= yield %>
+     
+      <div class="jumbotron">
+          <%= yield %>
+      </div>
+    
       
     </div>
   </body>

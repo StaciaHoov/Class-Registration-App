@@ -3,7 +3,8 @@
   <div class='panel-heading'>
     <p><h2>Title:  <%= @course.title %></h2></p>
   </div>
-  
+
+<div class="row" >
   <div class='panel-body'>
     <p><strong>Instructor: </strong><%= @course.user.name %></p>
     <p><strong>Description: </strong><%= @course.description %></p>
@@ -19,8 +20,10 @@
       </ul>
     </p>
   </div>
+
 </div>
-<% if current_user.role == 'admin' %>
+
+<% if current_user && current_user.role == 'admin' %>
   <p><strong>Delete Course?</strong>
     <%= link_to 'Delete', [@course], method: :delete, class: 'btn btn-danger' %>
   </p><br>

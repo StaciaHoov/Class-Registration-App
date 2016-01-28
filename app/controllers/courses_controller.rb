@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
     @medium_courses = Course.where(age_group: 'Medium')
     @big_courses = Course.where(age_group: 'Big')
     @adult_courses = Course.where(age_group: 'Adult')
+    
   end
   
   def planning

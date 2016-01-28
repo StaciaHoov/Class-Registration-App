@@ -11,8 +11,12 @@ class Course < ActiveRecord::Base
     validates :age_group, presence: true
     
     def openings
+        course_enrollments = Schedule.where(first_course_id: self.id).length +
+        Schedule.where(second_course_id: self.id).length +
+        Schedule.where(third_course_id: self.id).length
+        
         if self.max_students != nil
-            self.max_students - self.enrollments.count
+            self.max_students - course_enrollments
         end
     end
 
