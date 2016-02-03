@@ -4,14 +4,17 @@
     <h2>Log In</h2>
   </div>
   <div class='panel-body'>
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
-     
-      <%= f.input :email, placeholder: 'user@domain.com' %>
-      <%= f.input :password, placeholder: 'Leave blank if not changing password.' %>
-      <%= f.input :remember_me, inline_label: 'Remember me', as: :boolean, checked_value: true, unchecked_value: false %>  
-      <%= f.button :submit, 'Log In', class: 'btn btn-success' %>
-    <% end %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :email, placeholder: 'user@domain.com' %>
+          <%= f.input :password, placeholder: 'Leave blank if not changing password.' %>
+          <%= f.input :remember_me, inline_label: 'Remember me', as: :boolean, checked_value: true, unchecked_value: false %>  
+          <%= f.button :submit, 'Log In', class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
 </div> 
 
-<%= render "devise/shared/links" %>
+
