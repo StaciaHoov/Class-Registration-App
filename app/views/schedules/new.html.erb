@@ -11,7 +11,7 @@
                 <div >
                     <%= f.input :student_id, label: 'Student', :collection => @user.students %>
                         <%= f.input :first_course_id, label: 'First Block: 10:00 am', :as => :grouped_select, 
-                        :collection =>  Course.where(time_block: '1').group_by(&:age_group), :group_method => :last %>
+                        :collection =>  Course.where(time_block: '1') && Course.where(course_full: false).group_by(&:age_group), :group_method => :last %>
                         <%= f.input :second_course_id, label: 'Second Block: 11:00 am', :as => :grouped_select, 
                        :collection =>  Course.where(time_block: '2').group_by(&:age_group), :group_method => :last %>
                        <%= f.input :third_course_id, label: 'Third Block: 1:00 pm', :as => :grouped_select, 

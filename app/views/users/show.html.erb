@@ -12,7 +12,7 @@
     <div class='panel-body'>
         
         <h2>Students</h2>
-        <table id='student_list' class="stripe order-column hover" cellspacing="0" width="50%">
+        <table class="stripe order-column hover" cellspacing="0" width="50%">
                 <tr>
                     <th>Name</th>
                     <th>Age (yrs)</th>
@@ -37,7 +37,7 @@
     <div class='panel-body'>
         <h2>Student Schedules</h2>
         
-        <table id='user_enrollments' class="stripe order-column hover" cellspacing="0" width="100%">
+        <table class="stripe order-column hover" cellspacing="0" width="100%">
             <tr>
                 <th>Name</th>
                 <th>First Block</th>
@@ -47,24 +47,25 @@
             </tr>
             <% current_user.students.each do |student| %>
                 <% schedule = Schedule.where(student_id: student.id).last %>
-                    <tr>
-                        <td><%= student.name %></td>  
-                        <td><%= Course.find(schedule.first_course_id).title unless schedule.nil? %></td>
-                        <td><%= Course.find(schedule.second_course_id).title unless schedule.nil? %></td>
-                        <td><%= Course.find(schedule.third_course_id).title unless schedule.nil?  %></td>
-                        <td><% if schedule %>
-                               <%= link_to "Edit", edit_schedule_path(schedule) %> 
-                            <% else %>
-                                <%= link_to "Select Classes", new_schedule_path %>
-                            <% end %></td>
-                    </tr>
+                <tr>
+                    <td><%= student.name %></td>
+                    <% if schedule %>
+                        <td><%= Course.find(schedule.first_course_id).title unless schedule.first_course_id.nil? %></td>
+                        <td><%= Course.find(schedule.second_course_id).title unless schedule.second_course_id.nil? %></td>
+                        <td><%= Course.find(schedule.third_course_id).title unless schedule.third_course_id.nil?  %></td>
+                        <td><%= link_to "Edit", edit_schedule_path(schedule) %></td>
+                    <% else %>
+                        <td></td><td></td><td></td>
+                        <td><%= link_to "Select Classes", new_schedule_path %></td> 
+                    <% end %>    
+                </tr>
             <% end %>
         </table>
     </div>
      <div class='panel-body'>
         <h2>Teaching Classes</h2>
         
-        <table id='teaching_classes' class="stripe order-column hover" cellspacing="0" width="100%">
+        <table class="stripe order-column hover" cellspacing="0" width="100%">
             <tr>
                 <th>Title</th>
                 <th>Age Group</th>

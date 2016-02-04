@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @students = @user.students
+    @students = Student.where(user_id: @user.id)
    
   end
 
