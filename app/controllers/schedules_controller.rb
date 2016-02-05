@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  
   def new
     @courses_first_block = Course.where(time_block: 1)
     @courses_second_block = Course.where(time_block: 2)
@@ -13,12 +14,19 @@ class SchedulesController < ApplicationController
   
   def create 
     @schedule = Schedule.new(schedule_params)
-      if @schedule.save
-        redirect_to user_path(current_user) 
-      else
-        render :new
-      end
+    @course_first_block = Course.where(id: @schedule.first_course_id).last
+    @course_second_block = Course.where(id: @schedule.second_course_id).last
+    @course_third_block = Course.where(id: @schedule.third_course_id).last
+    if @schedule.save
+      redirect_to user_path(current_user) 
+      @course_first_block.check_full
+      @course_second_block.check_full
+      @course_third_block.check_full
+    else
+      render :new
+    end
   end
+  
   
   def edit
     @schedule = Schedule.find(params[:id])
@@ -40,4 +48,6 @@ class SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:student_id, :first_course_id, :second_course_id, :third_course_id, :_destroy)
   end
+  
+
 end

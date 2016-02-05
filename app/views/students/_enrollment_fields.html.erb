@@ -1,9 +1,0 @@
-
-<div>
-    <% f.input :student_id %>
-</div>
-    <%= f.input :course_id, label: '10:00 am', :as => :grouped_select, :collection =>  Course.where(time_block: '10:00 am').group_by(&:age_group), :group_method => :last %>
-</div>
-<div>
-   
-</div>

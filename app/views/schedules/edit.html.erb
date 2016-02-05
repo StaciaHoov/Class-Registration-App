@@ -1,21 +1,21 @@
-<h1><%= @schedule.student.name %>'s Schedule</h1>
-<%= simple_form_for @schedule do |f| %>    
-    <div class= 'col-md-8'>
-        <% f.input :student_id, label: 'Student' %>
+<div class='panel panel-default'>
+    <div class='panel-heading'>
+        <h1><%= @schedule.student.name %>'s Schedule</h1>
     </div>
-    <div class= 'col-md-8'>
-        <%= f.input :first_course_id, label: 'First Block: 10:00 am', :as => :grouped_select, 
-        :collection =>  Course.where(time_block: '1').group_by(&:age_group), :group_method => :last %>
+     <div class='panel-body'>
+        <div class="row">
+            <div class="col-md-6">
+                <%= simple_form_for @schedule do |f| %>    
+                    <% f.input :student_id, label: 'Student' %>
+                    <%= f.input :first_course_id, label: 'First Block: 10:00 am', :as => :grouped_select, 
+                    :collection =>  Course.where(time_block: '1').group_by(&:age_group), :group_method => :last %>
+                   <%= f.input :second_course_id, label: 'Second Block: 11:00 am', :as => :grouped_select, 
+                   :collection =>  Course.where(time_block: '2').group_by(&:age_group), :group_method => :last %>
+                   <%= f.input :third_course_id, label: 'Third Block: 1:00 pm', :as => :grouped_select, 
+                   :collection =>  Course.where(time_block: '3').group_by(&:age_group), :group_method => :last %>
+                    <%= f.button :submit %>
+                <% end %>
+            </div>
+        </div>
     </div>
-    <div class= 'col-md-8'>
-       <%= f.input :second_course_id, label: 'Second Block: 11:00 am', :as => :grouped_select, 
-       :collection =>  Course.where(time_block: '2').group_by(&:age_group), :group_method => :last %>
-    </div>
-    <div class= 'col-md-8'>
-       <%= f.input :third_course_id, label: 'Third Block: 1:00 pm', :as => :grouped_select, 
-       :collection =>  Course.where(time_block: '3').group_by(&:age_group), :group_method => :last %>
-    </div>
-    <div>
-      <%= f.button :submit %>
-    </div>
-<% end %>
+</div>

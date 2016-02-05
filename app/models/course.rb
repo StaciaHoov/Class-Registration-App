@@ -1,8 +1,7 @@
 class Course < ActiveRecord::Base
     belongs_to :user
-    has_many :enrollments
     has_many :schedules
-    has_many :students, through: :enrollments
+    has_many :students, through: :schedules
     
     default_scope { order('time_block ASC','age_group DESC') } 
     
@@ -19,18 +18,12 @@ class Course < ActiveRecord::Base
             self.max_students - course_enrollments
         end
     end
-
-
-    def self.list_by_age_time
-        Course.all.group_by(&:age_group).map do |age_group, array_age|  
-            [age_group, array_age.group_by(&:time_block)]
-        end
-    end
     
-    def self.list_by_time_age
-       Course.all.group_by(&:time_block ).map do |time_group, array_time|  
-            [time_group, array_time.group_by(&:age_group)]
+    def check_full
+        if self.openings <= 0
+            self.update_attribute(:course_full, 'true')
         end
     end
+
 end
 
