@@ -1,7 +1,7 @@
 class Student < ActiveRecord::Base
     belongs_to :user
     has_many :enrollments
-    has_one :schedule
+    has_one :schedule, dependent: :destroy
     has_many :courses, through: :enrollments
     accepts_nested_attributes_for :enrollments, reject_if: :all_blank, allow_destroy: true
     
