@@ -1,9 +1,9 @@
 class SchedulesController < ApplicationController
   
   def new    
-    @courses_first_block = Course.where(time_block: 1)
-    @courses_second_block = Course.where(time_block: 2) 
-    @courses_third_block = Course.where(time_block: 3) 
+    @courses_first = Course.where(time_block: 1).where(course_full: false)
+    @courses_second = Course.where(time_block: '2').where(course_full: false)
+    @courses_third = Course.where(time_block: '3').where(course_full: false)
     @schedule = Schedule.new
     @user = current_user
   end
@@ -28,6 +28,15 @@ class SchedulesController < ApplicationController
     end
   end
   
+  def destroy
+    @schedule = Schedule.find(params[:id])
+    if @schedule.destroy
+      flash[:notice] = "Schedule removed"
+    else
+      flash[:error] = "There was a problem removing schedule. Please try again."
+    end
+    redirect_to user_path(current_user)
+  end
   
   def edit
     @schedule = Schedule.find(params[:id])
