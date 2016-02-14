@@ -5,6 +5,7 @@
      <div class='panel-body'>
         <div class="row">
             <div class="col-md-6">
+                <h3 class="preview">Edit Schedule</h3>
                 <%= simple_form_for @schedule do |f| %>    
                     <% f.input :student_id, label: 'Student' %>
                     <%= f.input :first_course_id, label: 'First Block: 10:00 am', :as => :grouped_select, 
@@ -15,6 +16,9 @@
                    :collection =>  Course.where(time_block: '3').group_by(&:age_group), :group_method => :last %>
                     <%= f.button :submit %>
                 <% end %>
+            </div>
+            <div class="col-md-6">
+                <%= render partial: "table" %>
             </div>
         </div>
     </div>

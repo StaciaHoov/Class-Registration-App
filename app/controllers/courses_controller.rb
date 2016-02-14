@@ -2,24 +2,18 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tiny_courses = Course.where(age_group: 'Tiny')
-    @small_courses = Course.where(age_group: 'Small')
-    @medium_courses = Course.where(age_group: 'Medium')
-    @big_courses = Course.where(age_group: 'Big')
-    @adult_courses = Course.where(age_group: 'Adult')
-    
+    courses_by_age
   end
   
   def planning
-    @tiny_courses = Course.where(age_group: 'Tiny')
-    @small_courses = Course.where(age_group: 'Small')
-    @medium_courses = Course.where(age_group: 'Medium')
-    @big_courses = Course.where(age_group: 'Big')
-    @adult_courses = Course.where(age_group: 'Adult')
+    courses_by_age
   end
 
   def show
     @course = Course.find(params[:id])
+    @schedules_with_course = Schedule.where(first_course_id:  @course.id) ||
+      Schedule.where(second_course_id:  @course.id) || Schedule.where(third_course_id:  @course.id)
+  
     respond_to do |format|
       format.html
       format.json {render :json => @course}
@@ -40,7 +34,6 @@ class CoursesController < ApplicationController
       else
         render :new
       end
-      
   end
 
   def update
@@ -68,6 +61,7 @@ class CoursesController < ApplicationController
     end
   end
 
+
   private
     def set_course
       @course = Course.find(params[:id])
@@ -76,4 +70,13 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:user_id, :title, :description, :age_group, :time_block, :max_students, :fee)
     end
+    
+    def courses_by_age
+      @tiny_courses = Course.where(age_group: 'Tiny')
+      @small_courses = Course.where(age_group: 'Small')
+      @medium_courses = Course.where(age_group: 'Medium')
+      @big_courses = Course.where(age_group: 'Big')
+      @adult_courses = Course.where(age_group: 'Adult')
+    end
+      
 end

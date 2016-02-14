@@ -10,18 +10,22 @@
                 <div >
                     <%= simple_form_for @schedule do |f| %>   
                         <%= f.input :student_id, label: 'Student', :collection => @user.students %>
+                        
                         <%= f.input :first_course_id, label: 'First Block: 10:00 am', :as => :grouped_select, 
-                        :collection =>  Course.where(time_block: '1').group_by(&:age_group), :group_method => :last %>
+                        :collection =>  Course.where(time_block: '1').where(course_full: false).group_by(&:age_group), :group_method => :last %>
+                        
                         <%= f.input :second_course_id, label: 'Second Block: 11:00 am', :as => :grouped_select, 
-                       :collection =>  Course.where(time_block: '2').group_by(&:age_group), :group_method => :last %>
+                       :collection =>  Course.where(time_block: '2').where(course_full: false).group_by(&:age_group), :group_method => :last %>
+                       
                        <%= f.input :third_course_id, label: 'Third Block: 1:00 pm', :as => :grouped_select, 
-                       :collection =>  Course.where(time_block: '3').group_by(&:age_group), :group_method => :last %>
+                       :collection =>  Course.where(time_block: '3').where(course_full: false).group_by(&:age_group), :group_method => :last %>
                         <%= f.button :submit, class: 'btn btn-primary btn-sm' %>
                     <% end %>
                 </div>
             </div>
-                    
-            <%= render partial: "table", local: { Course: Course } %>
+            <div class="col-md-6">
+                
+            </div>
         </div>
     </div>   
 </div>

@@ -80,6 +80,7 @@
                             <th>Title</th>
                             <th>Age Group</th>
                             <th>Time Block</th>
+                            <th>Enrolled Students</th>
                             <th>Change Teaching Schedule?</th>
                         </tr>
                     </thead>
@@ -89,6 +90,7 @@
                                 <td><%= course.title %> </td> 
                                 <td><%=course.age_group %> </td>
                                 <td><%= course.time_block %> </td>
+                                <td><%= link_to 'Class Roster', course %></td>
                                 <td><%= link_to "Edit", edit_course_path(course) %> | <%= link_to 'Delete', course, method: :delete %> </td>
                             </tr>
                         <% end %>
