@@ -1,0 +1,60 @@
+<div class="col-md-6">
+   <h3 class="preview">Course Reference</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered .table-condensed">
+            <tr>
+                <th>First Block</th>
+                <th>Age</th>
+                <th>Status</th>
+                <th>Details</th>
+            </tr>
+            <% Course.where(time_block: 1).each do |course| %>
+            <tr>
+                <td><%= course.title %></td>
+                <td><%= course.age_group %></td>
+                <td><% if course.openings > 0  %>
+                        <small>Open</small>
+                    <% else %>
+                        <small>Full</small>
+                    <% end %>
+                </td>
+                <td><%= link_to 'Details', course %></td>
+            </tr>
+            <% end %>
+            
+            <tr>
+                <th>Second Block</th><th></th><th></th><th></th>
+            </tr>
+            <% Course.where(time_block: 2).each do |course| %>
+            <tr>
+                <td><%= course.title %></td>
+                <td><%= course.age_group %></td>
+                <td><% if course.openings>0  %>
+                        <small>Open</small>
+                    <% else %>
+                        <small>Full</small>
+                    <% end %>
+                </td>
+                <td><%= link_to 'Details', course %></td>
+            </tr>
+            <% end %>
+            
+            <tr>
+                <th>Third Block</th><th></th><th></th><th></th>
+            </tr>
+            <% Course.where(time_block: 3).each do |course| %>
+                <tr>
+                    <td><%= course.title %></td>
+                    <td><%= course.age_group %></td>
+                    <td><% if course.openings>0  %>
+                        <small>Open</small>
+                    <% else %>
+                        <small>Full</small>
+                    <% end %>
+                    </td>
+                    <td><%= link_to 'Details', course %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div> 
+</div>

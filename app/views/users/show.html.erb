@@ -4,82 +4,97 @@
         <h1><%= current_user.name %>'s Account</h1>
     </div>
     <div class='panel-body'>
-        <h2>User Information</h2>
-        <p><strong>Name: </strong><%= current_user.name %></p>
-        <p><strong>Email: </strong><%= current_user.email %></p>
-        <%= link_to "Edit User", edit_user_registration_path %>
-    </div>
-    <div class='panel-body'>
-        
-        <h2>Students</h2> <%= link_to "Add Students", edit_user_path(current_user), class: "btn btn-primary btn-small" %>
-        <table class="stripe order-column hover" cellspacing="0" width="50%">
-                <tr>
-                    <th>Name</th>
-                    <th>Age (yrs)</th>
-                    <th>Change Students (add or edit)?</th>
-                </tr>
-                <% if @user.students %>
-                    <% @user.students.each do |student| %>
-                    <tr>
-                        <td><%= student.name %></td> 
-                        <td><%= student.age %></td>
-                        <td><%= link_to "Edit", edit_user_path(current_user) %></td>
-                    </tr>
-                <% end %><br>
-            <% else %>
-                <p>There are no students on your account. Click to 
-                <%= link_to "Add Students", edit_user_registration_path %></p>
-            <% end %>
-        </table>
-    </div>
-   
+        <div class="row">
+            <div class="col-md-6">
+                <h2>User Information</h2>
+                <p><strong>Name: </strong><%= current_user.name %></p>
+                <p><strong>Email: </strong><%= current_user.email %></p>
+                <%= link_to "Edit User", edit_user_registration_path %>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <h2>Students</h2>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age (yrs)</th>
+                            <th>Change Students (add or edit)?</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        <% @user.students.each do |student| %>
+                            <tr>
+                                <td><%= student.name %></td> 
+                                <td><%= student.age %></td>
+                                <td><%= link_to "Edit", edit_user_path(current_user) %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+               </table>
+               <%= link_to "Add Students", edit_user_path(current_user) %>
+            </div>   
+        </div>        
     
-    <div class='panel-body'>
-        <h2>Student Schedules</h2>
-        
-        <table class="stripe order-column hover" cellspacing="0" width="100%">
-            <tr>
-                <th>Name</th>
-                <th>First Block</th>
-                <th>Second Block</th>
-                <th>Third Block </th>
-                <th>Change Schedule?</th>
-            </tr>
-            <% current_user.students.each do |student| %>
-                <% schedule = Schedule.where(student_id: student.id).last %>
-                <tr>
-                    <td><%= student.name %></td>
-                    <% if schedule %>
-                        <td><%= Course.find(schedule.first_course_id).title unless schedule.first_course_id.nil? %></td>
-                        <td><%= Course.find(schedule.second_course_id).title unless schedule.second_course_id.nil? %></td>
-                        <td><%= Course.find(schedule.third_course_id).title unless schedule.third_course_id.nil?  %></td>
-                        <td><%= link_to "Edit", edit_schedule_path(schedule) %></td>
-                    <% else %>
-                        <td></td><td></td><td></td>
-                        <td><%= link_to "Select Classes", new_schedule_path %></td> 
-                    <% end %>    
-                </tr>
-            <% end %>
-        </table>
-    </div>
-     <div class='panel-body'>
-        <h2>Teaching Classes</h2>
-        
-        <table class="stripe order-column hover" cellspacing="0" width="100%">
-            <tr>
-                <th>Title</th>
-                <th>Age Group</th>
-                <th>Time Block</th>
-                <th>Change Teaching Schedule?</th>
-            </tr>
-            <% current_user.courses.each do |course| %>
-                <tr>
-                    <td><%= course.title %> </td> 
-                    <td><%=course.age_group %> </td>
-                    <td><%= course.time_block %> </td>
-                    <td><%= link_to "Edit", edit_course_path(course) %> | <%= link_to 'Delete', course, method: :delete %> </td>
-                </tr>
-            <% end %>
-        </table>
+        <div class="row">
+           <div class="col-md-12">
+               <table class="table table-bordered">
+                <h2>Student Schedules</h2>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>First Block</th>
+                            <th>Second Block</th>
+                            <th>Third Block </th>
+                            <th>Change Schedule?</th>
+                        </tr>
+                    </head>
+                    <tbody>
+                        <% current_user.students.each do |student| %>
+                            <% schedule = Schedule.where(student_id: student.id).last %>
+                            <tr>
+                                <td><%= student.name %></td>
+                                <% if schedule %>
+                                    <td><%= Course.find(schedule.first_course_id).title unless schedule.first_course_id.nil? %></td>
+                                    <td><%= Course.find(schedule.second_course_id).title unless schedule.second_course_id.nil? %></td>
+                                    <td><%= Course.find(schedule.third_course_id).title unless schedule.third_course_id.nil?  %></td>
+                                    <td><%= link_to "Edit", edit_schedule_path(schedule) %></td>
+                                <% else %>
+                                    <td></td><td></td><td></td>
+                                    <td><%= link_to "Select Classes", new_schedule_path %></td> 
+                                <% end %>  
+                            </tr>
+                        <% end %>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+                   
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                <h2>Teaching </h2>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Age Group</th>
+                            <th>Time Block</th>
+                            <th>Change Teaching Schedule?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% current_user.courses.each do |course| %>
+                            <tr>
+                                <td><%= course.title %> </td> 
+                                <td><%=course.age_group %> </td>
+                                <td><%= course.time_block %> </td>
+                                <td><%= link_to "Edit", edit_course_path(course) %> | <%= link_to 'Delete', course, method: :delete %> </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

@@ -9,7 +9,7 @@
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <%= f.error_notification %>
           <%= f.input :email, placeholder: 'user@domain.com' %>
-          <%= f.input :password, placeholder: 'Leave blank if not changing password.' %>
+          <%= f.input :password %>
           <%= f.input :remember_me, inline_label: 'Remember me', as: :boolean, checked_value: true, unchecked_value: false %>  
           <%= f.button :submit, 'Log In', class: 'btn btn-primary' %>
         <% end %>
