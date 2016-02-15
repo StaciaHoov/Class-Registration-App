@@ -6,18 +6,20 @@
             <th>Age</th>
             <th>Status</th>
             <th>Details</th>
+            <th>full?</th>
         </tr>
         <% Course.where(time_block: 1).each do |course| %>
         <tr>
             <td><%= course.title %></td>
             <td><%= course.age_group %></td>
             <td><% if course.openings > 0  %>
-                    <small>Open</small>
+                    <small>Open (<%= course.openings %> seat)</small>
                 <% else %>
                     <small style="color:red">FULL</small>
                 <% end %>
             </td>
             <td><%= link_to 'Details', course %></td>
+            <td><%= course.course_full %></td>
         </tr>
         <% end %>
         
@@ -29,12 +31,13 @@
             <td><%= course.title %></td>
             <td><%= course.age_group %></td>
             <td><% if course.openings > 0  %>
-                    <small>Open</small>
+                    <small>Open (<%= course.openings %> seat)</small>
                 <% else %>
                     <small style="color:red">FULL</small>
                 <% end %>
             </td>
             <td><%= link_to 'Details', course %></td>
+            <td><%= course.course_full %></td>
         </tr>
         <% end %>
         
@@ -46,11 +49,12 @@
                 <td><%= course.title %></td>
                 <td><%= course.age_group %></td>
                 <td><% if course.openings > 0  %>
-                    <small>Open</small>
+                    <small>Open (<%= course.openings %> seat)</small>
                 <% else %>
                     <small style="color:red">FULL</small>
                 <% end %>
                 </td>
+                <td><%= course.course_full %></td>
                 <td><%= link_to 'Details', course %></td>
             </tr>
         <% end %>

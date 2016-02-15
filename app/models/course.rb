@@ -1,13 +1,14 @@
 class Course < ActiveRecord::Base
     belongs_to :user
     has_many :schedules
-    has_many :students, through: :schedules
     
     default_scope { order('time_block ASC','age_group DESC') } 
     
     validates :title, length: { maximum: 40 }, presence: true
     validates :user, presence: true
     validates :age_group, presence: true
+    validates :max_students, presence: true
+    validates :time_block, presence: true
     
     def openings
         course_enrollments = Schedule.where(first_course_id: self.id).length +
@@ -24,6 +25,9 @@ class Course < ActiveRecord::Base
             self.update_attribute(:course_full, 'true')
         end
     end
-
+    
+    def course_avail
+        self.update_attribute(:course_full, 'false')
+    end
 end
 
