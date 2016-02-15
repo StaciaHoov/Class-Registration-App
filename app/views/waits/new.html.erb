@@ -1,0 +1,23 @@
+<div class='panel panel-default'>
+    <div class='panel-heading'>
+        <h1>Get on Waiting List</h1> 
+    </div>
+                
+    <div class='panel-body'>
+        <div class="row">
+            <div class="col-md-6">
+              <%= simple_form_for(@wait) do |f| %>
+                <%= f.error_notification %>
+              
+                <div class="form-inputs">
+                  <%= f.association :student, label: "Student" %>
+                  <%= f.association :course, label: "Class", :include_blank => false %>
+                </div>
+                <div class="form-actions">
+                  <%= f.button :submit, label: 'Put on Waitlist', class: 'btn btn-primary' %>
+                </div><br>
+              <% end %>
+            </div>
+        </div>  
+    </div>
+</div>

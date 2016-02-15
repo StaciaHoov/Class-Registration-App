@@ -6,7 +6,7 @@
             <th>Age</th>
             <th>Status</th>
             <th>Details</th>
-            <th>full?</th>
+            <th>Wait list</th>
         </tr>
         <% Course.where(time_block: 1).each do |course| %>
         <tr>
@@ -19,7 +19,9 @@
                 <% end %>
             </td>
             <td><%= link_to 'Details', course %></td>
-            <td><%= course.course_full %></td>
+            <td><% if course.course_full = true %>
+                    <%= link_to "get on list", new_wait_path(course) %>
+                <% end %></td>
         </tr>
         <% end %>
         
@@ -37,7 +39,9 @@
                 <% end %>
             </td>
             <td><%= link_to 'Details', course %></td>
-            <td><%= course.course_full %></td>
+            <td><% if course.course_full = true %>
+                    <%= link_to "get on list", new_wait_path(course) %>
+                <% end %></td>
         </tr>
         <% end %>
         
@@ -56,6 +60,9 @@
                 </td>
                 <td><%= course.course_full %></td>
                 <td><%= link_to 'Details', course %></td>
+                <td><% if course.course_full = true %>
+                    <%= link_to "get on list", new_wait_path(course) %>
+                <% end %></td>
             </tr>
         <% end %>
     </table>

@@ -1,0 +1,12 @@
+<%= simple_form_for(@wait) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :student_id, label: "Student", collection: @students %>
+    <%= f.input :course_id, label: "Class", :as => :grouped_select, 
+      :collection =>  Course.where(course_full: true).group_by(&:time_block), :group_method => :last %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, label: 'Put on Waitlist', class: 'btn btn-primary' %>
+  </div><br>
+<% end %>
