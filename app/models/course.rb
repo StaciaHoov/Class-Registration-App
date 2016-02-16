@@ -11,24 +11,33 @@ class Course < ActiveRecord::Base
     validates :max_students, presence: true
     validates :time_block, presence: true
     
-    def openings
-        course_enrollments = Schedule.where(first_course_id: self.id).length +
-        Schedule.where(second_course_id: self.id).length +
-        Schedule.where(third_course_id: self.id).length
-        
-        if self.max_students != nil
-            self.max_students - course_enrollments
+    
+    def upcount_seats
+        if Schedule.where(first_course_id: self.id) || Schedule.where(second_course_id: self.id) ||
+            Schedule.where(third_course_id: self.id)
+            self.increment!(:seats_taken)
         end
+        check_full
     end
+    
+    def downcount_seats
+        if Schedule.where(first_course_id: self.id) || Schedule.where(second_course_id: self.id) ||
+        Schedule.where(third_course_id: self.id)
+            self.decrement!(:seats_taken)
+        end
+        check_full
+    end
+      
+        
+    private
     
     def check_full
-        if self.openings <= 0
+        if self.max_students - self.seats_taken <= 0
             self.update_attribute(:course_full, 'true')
+        else
+            self.update_attribute(:course_full, 'false')
         end
     end
-    
-    def course_avail
-        self.update_attribute(:course_full, 'false')
-    end
+
 end
 

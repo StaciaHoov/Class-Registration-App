@@ -21,10 +21,10 @@
             <td><%= course.title %></td>
             <td><%= course.user.name %></td>
             <td><%= course.max_students %></td>
-            <td><% if course.openings && course.openings <= 0 %>
-                  <small>Class Full. <%=link_to 'Waiting list?' %></small>
+            <td><% if course.seats_taken = course.max_students %>
+                  <small>Class Full <%=link_to 'Waiting list?' %></small>
                 <% else %>
-                  <%= course.openings %>
+                  <%= course.max_students - course.seats_taken %>
                 <% end %></td>
             <td><%= number_to_currency(course.fee) %></td>
             <td><%= link_to 'Description', course %></td>

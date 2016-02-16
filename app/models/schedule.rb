@@ -3,20 +3,22 @@ class Schedule < ActiveRecord::Base
     has_many :courses 
     
     before_destroy :make_course_avail
-    after_save :reset_course_full
+
+    after_save :reset_course_full 
     
     def make_course_avail
         course_all_blocks
-        @course_first_block.course_avail if @course_first_block
-        @course_second_block.course_avail if @course_second_block
-        @course_third_block.course_avail if @course_third_block
+        @course_first_block.downcount_seats if @course_first_block
+        @course_second_block.downcount_seats if @course_second_block
+        @course_third_block.downcount_seats if @course_third_block
+
     end
         
     def reset_course_full
         course_all_blocks
-        @course_first_block.check_full if @course_first_block
-        @course_second_block.check_full if @course_second_block
-        @course_third_block.check_full if @course_third_block
+        @course_first_block.upcount_seats if @course_first_block
+        @course_second_block.upcount_seats if @course_second_block
+        @course_third_block.upcount_seats if @course_third_block        
     end
     
     private
