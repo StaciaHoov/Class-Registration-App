@@ -7,8 +7,6 @@
             <th>Status</th>
             <th>Details</th>
             <th>Wait list</th>
-            <th>course full</th>
-            <th>seats taken</th>
         </tr>
         <% Course.where(time_block: 1).each do |course| %>
         <tr>
@@ -21,16 +19,16 @@
                 <% end %>
             </td>
             <td><%= link_to 'Details', course %></td>
-            <td><% if course.course_full = true %>
-                    <%= link_to "get on list", new_wait_path(course) %>
-                <% end %></td>
-            <td><%= course.course_full %></td>
-            <td><%= course.seats_taken %></td>
+            <% if course.course_full = true %>
+                <td><%= link_to "get on list", new_wait_path(course) %></td>
+            <% else %>
+                <td></td>
+            <% end %>
         </tr>
         <% end %>
         
         <tr>
-            <th>Second Block</th><th></th><th></th><th></th>
+            <th>Second Block</th><th></th><th></th><th></th><th></th>
         </tr>
         <% Course.where(time_block: 2).each do |course| %>
         <tr>
@@ -43,30 +41,34 @@
                 <% end %>
             </td>
             <td><%= link_to 'Details', course %></td>
-            <td><% if course.course_full = true %>
-                    <%= link_to "get on list", new_wait_path(course) %>
-                <% end %></td>
+            <% if course.course_full = true %>
+                <td><%= link_to "get on list", new_wait_path(course) %></td>
+            <% else %>
+                <td></td>
+            <% end %>
         </tr>
         <% end %>
         
         <tr>
-            <th>Third Block</th><th></th><th></th><th></th>
+            <th>Third Block</th><th></th><th></th><th></th><th></th>
         </tr>
         <% Course.where(time_block: 3).each do |course| %>
             <tr>
                 <td><%= course.title %></td>
                 <td><%= course.age_group %></td>
-                <td><% if course.openings > 0  %>
-                    <small>Open (<%= course.openings %> seat)</small>
+                <td><% if course.max_students > course.seats_taken  %>
+                    <small>Open (<%= course.max_students - course.seats_taken %> seats)</small>
                 <% else %>
                     <small style="color:red">FULL</small>
                 <% end %>
                 </td>
                 <td><%= course.course_full %></td>
                 <td><%= link_to 'Details', course %></td>
-                <td><% if course.max_students > course.seats_taken  %>
-                    <small>Open (<%= course.max_students - course.seats_taken %> seats)</small>
-                <% end %></td>
+                <% if course.course_full = true %>
+                    <td><%= link_to "get on list", new_wait_path(course) %></td>
+                <% else %>
+                    <td></td>
+                <% end %>
             </tr>
         <% end %>
     </table>
