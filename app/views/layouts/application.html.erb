@@ -10,30 +10,32 @@
   </head>
   <body>
     <div class="container">
-      <ul class="nav nav-tabs">
-        <li><%= link_to "Welcome", root_path %></li>
-        <li><%= link_to "Class Schedule", courses_path %></li>
-
-        <% if current_user %>
-          <li><%= link_to "My Account", user_path(current_user) %></li>
-          <li><%= link_to "**Class Planning**", courses_planning_path %></li>
-        <% end %>
-        <div class="pull-right user-info">
+      <div role="navigation">
+        <ul class="nav nav-pills">
+          <li><%= link_to "Welcome", root_path %></li>
+          <li><%= link_to "Class Schedule", courses_path %></li>
+  
           <% if current_user %>
-            <p>Hi <%= current_user.name || current_user.email %>! </p>
-            <%= link_to user_path(current_user), class: 'btn btn-primary btn-sm' do %>
-              <span class="glyphicon glyphicon-user"></span>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
-              <span class="glyphicon glyphicon-log-out"></span>
-            <% end %>
-          <% else %>
-             <%= link_to new_user_registration_path, class: 'btn btn-primary btn-sm' do %>
-              <span class="glyphicon glyphicon-log-in"></span>
-            <% end %>
+            <li><%= link_to "My Account", user_path(current_user) %></li>
+            <li><%= link_to "**Class Planning**", courses_planning_path %></li>
           <% end %>
-        </div>
-      </ul>
+          <div class="pull-right user-info">
+            <% if current_user %>
+              <p>Hi <%= current_user.name || current_user.email %>! </p>
+              <%= link_to user_path(current_user), class: 'btn btn-primary btn-sm' do %>
+                <span class="glyphicon glyphicon-user"></span>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
+                <span class="glyphicon glyphicon-log-out"></span>
+              <% end %>
+            <% else %>
+               <%= link_to new_user_registration_path, class: 'btn btn-primary btn-sm' do %>
+                <span class="glyphicon glyphicon-log-in"></span>
+              <% end %>
+            <% end %>
+          </div>
+        </ul>
+      </div>
       
       <% if flash[:notice] %>
         <div class="alert alert-success">

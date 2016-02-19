@@ -11,14 +11,14 @@
                 <p><strong>Email: </strong><%= current_user.email %></p>
                 <%= link_to "Edit User", edit_user_registration_path %>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 table-responsive">
                 <table class="table table-bordered">
                     <h2>Students</h2>
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Age (yrs)</th>
-                            <th>Change Students (add or edit)?</th>
+                            <th>Edit Students</th>
                         </tr>
                     </thead> 
                     <tbody>
@@ -36,7 +36,7 @@
         </div>        
     
         <div class="row">
-           <div class="col-md-12">
+           <div class="col-md-12 table-responsive">
                <table class="table table-bordered">
                 <h2>Student Schedules</h2>
                     <thead>
@@ -72,7 +72,7 @@
     
                    
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 table-responsive">
                 <table class="table table-bordered">
                 <h2>Teaching </h2>
                     <thead>
