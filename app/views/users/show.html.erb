@@ -5,7 +5,7 @@
     </div>
     <div class='panel-body'>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5" id="user_info">
                 <h2>User Information</h2>
                 <p><strong>Name: </strong><%= current_user.name %></p>
                 <p><strong>Email: </strong><%= current_user.email %></p>
@@ -31,7 +31,7 @@
                         <% end %>
                     </tbody>
                </table>
-               <%= link_to "Add Students", edit_user_path(current_user) %>
+                <%= link_to "Add Students", edit_user_path(current_user) %>
             </div>   
         </div>        
     

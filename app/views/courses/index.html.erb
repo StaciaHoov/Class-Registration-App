@@ -2,7 +2,7 @@
   <div class='panel-heading'>
     <h1>Current Class Offerings - Winter 2015</h1>
   </div>
-  <div class='panel-body'>
+  <div class='panel-body table-responsive'>
     <%= render partial: "courses/table_final", locals: {type: "tiny", collection: @tiny_courses} %>
     <%= render partial: "courses/table_final", locals: {type: "small", collection: @small_courses} %>
     <%= render partial: "courses/table_final", locals: {type: "medium", collection: @medium_courses} %>
