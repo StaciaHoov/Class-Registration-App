@@ -31,3 +31,8 @@
 .btn-danger {
     background-color: #BD4C48;
 }
+
+.nav-tabs>li>a:hover, .nav>li>a:focus, .nav>li>a:hover {
+    border-color: transparent !important;
+    background-color: rgba(236, 122, 9, 0.5);
+}

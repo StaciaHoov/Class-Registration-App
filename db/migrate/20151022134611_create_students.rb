@@ -3,7 +3,7 @@ class CreateStudents < ActiveRecord::Migration
     create_table :students do |t|
       t.string :name
       t.integer :user_id
-      t.integer :age_group
+      t.integer :age
 
       t.timestamps null: false
     end

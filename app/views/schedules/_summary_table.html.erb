@@ -62,7 +62,6 @@
                     <small style="color:red">FULL</small>
                 <% end %>
                 </td>
-                <td><%= course.course_full %></td>
                 <td><%= link_to 'Details', course %></td>
                 <% if course.course_full = true %>
                     <td><%= link_to "get on list", new_wait_path(course) %></td>

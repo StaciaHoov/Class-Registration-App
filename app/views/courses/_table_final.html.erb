@@ -21,7 +21,7 @@
             <td><%= course.title %></td>
             <td><%= course.user.name %></td>
             <td><%= course.max_students %></td>
-            <td><% if course.seats_taken = course.max_students %>
+            <td><% if course.max_students <= course.seats_taken %>
                   <small>Class Full <%=link_to 'Waiting list?' %></small>
                 <% else %>
                   <%= course.max_students - course.seats_taken %>

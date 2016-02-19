@@ -13,18 +13,12 @@ class Course < ActiveRecord::Base
     
     
     def upcount_seats
-        if Schedule.where(first_course_id: self.id) || Schedule.where(second_course_id: self.id) ||
-            Schedule.where(third_course_id: self.id)
-            self.increment!(:seats_taken)
-        end
+        self.increment!(:seats_taken)
         check_full
     end
     
     def downcount_seats
-        if Schedule.where(first_course_id: self.id) || Schedule.where(second_course_id: self.id) ||
-        Schedule.where(third_course_id: self.id)
-            self.decrement!(:seats_taken)
-        end
+        self.decrement!(:seats_taken)
         check_full
     end
       
