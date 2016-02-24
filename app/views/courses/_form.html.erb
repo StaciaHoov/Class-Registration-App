@@ -2,14 +2,51 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :user, label: "Instructor" %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :max_students, collection: 1..20 %>
-    <%= f.input :age_group, collection: ['Tiny', 'Small', 'Medium', 'Big', 'Adult'], as: :radio_buttons %></br>
-    <%= f.input :time_block, collection: [['1','First Block (10:00 am)'],['2', 'Second Block (11:00 am)'], ['3','Third Block (1:00 pm)']], :label_method => :last, :value_method => :first,  as: :radio_buttons  %>
-    <%= f.input :fee, as: :currency %>
-  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :title %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :description %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.association :user, label: "Instructor" %>
+      </div>
+      <div class="col-md-4">
+         <%= f.input :max_students, collection: 1..30 %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :fee, as: :currency %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.input :age_group, collection: ['Tiny', 'Small', 'Medium', 'Big', 'Adult', 'All Ages'], as: :radio_buttons %></br>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :time_block, collection: [['1'],['2'], ['3'], ['0', 'No preference']], :label_method => :last, :value_method => :first,  as: :radio_buttons  %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :room, collection: ['Kitchen', 'Outdoor', 'Common', 'Lounge', 'Nursery', 'Offsite', 'Other'], as: :radio_buttons %></br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 class_form_notes">
+        <h4>Notes</h4>
+        <b>Description -</b> In addition to a brief description of content, please include information on skill level, materials, offsite location 
+         or if parental oversite is required. </br>
+         <b>Max students -</b> This number will control how many students can sign up for a class before the class is closed to registration. Once full, students can put 
+         their name on a waiting list in case a spot opens up.</br>
+         <b>Age group -</b> This is a ball-park target group. Parents can decide if 
+        the course is suitable for their child(ren).</br>
+        <b>Time block & Room - </b> Unless otherwise communicated to the Academic Group, room and times are preferences. They may need to be changed during the planning 
+        stage.The goal is to provide two choices to each age group per time block. </br>
+        <h4>Thanks for your valuable contribution to WHO!</h4></br>
+      </div>
+    </div>
 
   <div class="form-actions">
     <%= f.button :submit, label: 'Update Class', class: 'btn btn-primary' %>
