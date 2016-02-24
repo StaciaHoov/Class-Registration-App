@@ -11,6 +11,7 @@
     <p><strong>Time block: </strong><%= @course.time_block %></p>
     <p><strong>Age group: </strong><%= @course.age_group %></p>
     <p><strong>Max students: </strong><%= @course.max_students %></p>
+    <p><strong>Room: </strong><%= @course.room %></p>
     <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p>
     <p><strong>Class Roster: </strong>
       <ul class='list-unstyled'>
@@ -23,9 +24,9 @@
 
 </div>
 
-<% if current_user && current_user.role == 'admin' %>
-  <p><strong>Delete Course?</strong>
-    <%= link_to 'Delete', [@course], method: :delete, class: 'btn btn-danger btn-small' %>
+<% if current_user %>
+  <p><strong>Remove Class?</strong>
+    <%= link_to 'Delete', [@course], method: :delete %>
   </p><br>
   <%= link_to 'Edit', edit_course_path(@course) %> |
 <% end %>

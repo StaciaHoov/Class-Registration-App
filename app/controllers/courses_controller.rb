@@ -68,15 +68,15 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:user_id, :title, :description, :age_group, :time_block, :max_students, :fee, :seats_taken)
+      params.require(:course).permit(:user_id, :title, :description, :age_group, :time_block, :max_students, :fee, :seats_taken, :room)
     end
     
     def courses_by_age
-      @tiny_courses = Course.where(age_group: 'Tiny')
-      @small_courses = Course.where(age_group: 'Small')
-      @medium_courses = Course.where(age_group: 'Medium')
-      @big_courses = Course.where(age_group: 'Big')
-      @adult_courses = Course.where(age_group: 'Adult')
+      @tiny_courses = Course.where(age_group: ['Tiny', 'All']) 
+      @small_courses = Course.where(age_group: ['Small','All']) 
+      @medium_courses = Course.where(age_group: ['Medium','All']) 
+      @big_courses = Course.where(age_group: ['Big', 'All']) 
+      @adult_courses = Course.where(age_group: ['Adult', 'All']) 
     end
       
 end

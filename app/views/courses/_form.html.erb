@@ -24,7 +24,7 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <%= f.input :age_group, collection: ['Tiny', 'Small', 'Medium', 'Big', 'Adult', 'All Ages'], as: :radio_buttons %></br>
+        <%= f.input :age_group, collection: ['Tiny', 'Small', 'Medium', 'Big', 'Adult', 'All'], as: :radio_buttons %></br>
       </div>
       <div class="col-md-4">
         <%= f.input :time_block, collection: [['1'],['2'], ['3'], ['0', 'No preference']], :label_method => :last, :value_method => :first,  as: :radio_buttons  %>

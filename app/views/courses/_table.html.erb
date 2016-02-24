@@ -5,23 +5,27 @@
     <table id="<%= type %>_courses" class="stripe order-column hover" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th>Time block</th>
+          <th>Time Block</th>
           <th>Title</th>
           <th>Instructor</th>
-          <th>Max students</th>
+          <th>Age</th>
+          <th>Max Students</th>
           <th>Fee</th>
-          <th>More Info</th>
+          <th>Room</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <% collection.each do |course| %>
           <tr>
-            <td><%= best_in_place course, :time_block, :as => :select, :collection => [["1", "10:00 am"], ["2", "11:00 am"], ["3", "1:00 pm"]] %></td>
+            <td><%= best_in_place course, :time_block, :as => :select, :collection => ["1", "2", "3"] %></td>
             <td><%= best_in_place course, :title, :as => :input %></td>
             <td><%= course.user.name %></td>
+            <td><%= course.age_group %></td>
             <td><%= course.max_students %></td>
             <td><%= number_to_currency(course.fee) %></td>
-            <td><%= link_to 'Description ', course %></td>
+            <td><%= course.room %></td>
+            <td><%= course.description %><%= link_to ' >More', course %></td>
           </tr>
         <% end %>
       </tbody>
