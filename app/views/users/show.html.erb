@@ -6,7 +6,7 @@
     <div class='panel-body'>
         <div class="row">
             <div class="col-md-5" id="user_info">
-                <h2>User Information</h2>
+                <h2>User Information</h2> 
                 <p><strong>Name: </strong><%= current_user.name %></p>
                 <p><strong>Email: </strong><%= current_user.email %></p>
                 <%= link_to "Edit Account", edit_user_registration_path %> 
@@ -15,6 +15,7 @@
             <div class="col-md-6 table-responsive">
                 <table class="table table-bordered">
                     <h2>Students</h2>
+                    <%= link_to "Add Students", edit_user_path(current_user) %>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -23,16 +24,20 @@
                         </tr>
                     </thead> 
                     <tbody>
-                        <% @user.students.each do |student| %>
-                            <tr>
+                        <tr>
+                        <% if @user.students.empty? %>
+                            <td>(No students)</td><td></td><td></td>
+                        <% else %>
+                            <% @user.students.each do |student| %>
                                 <td><%= student.name %></td> 
                                 <td><%= student.age %></td>
                                 <td><%= link_to "Edit", edit_user_path(current_user) %> </td>
+                            <% end %>
                             </tr>
                         <% end %>
                     </tbody>
                </table>
-                <%= link_to "Add Students", edit_user_path(current_user) %>
+               
             </div>   
         </div>        
     
@@ -50,21 +55,26 @@
                         </tr>
                     </head>
                     <tbody>
-                        <% current_user.students.each do |student| %>
-                            <% schedule = Schedule.where(student_id: student.id).last %>
-                            <tr>
-                                <td><%= student.name %></td>
-                                <% if schedule %>
-                                    <td><%= Course.find(schedule.first_course_id).title unless schedule.first_course_id.nil? %></td>
-                                    <td><%= Course.find(schedule.second_course_id).title unless schedule.second_course_id.nil? %></td>
-                                    <td><%= Course.find(schedule.third_course_id).title unless schedule.third_course_id.nil?  %></td>
-                                    <td><%= link_to "Delete", schedule_path(schedule), method: :delete %></td>
-                                <% else %>
-                                    <td></td><td></td><td></td>
-                                    <td><%= link_to "Select Classes", new_schedule_path %></td> 
-                                <% end %>  
-                            </tr>
-                        <% end %>
+                        <tr>
+                            <% if current_user.students.empty? %>
+                                <td>(No schedules)</td><td></td><td></td><td></td><td></td>
+                            <% else %>
+                                <% current_user.students.each do |student| %>
+                                    <% schedule = Schedule.where(student_id: student.id).last %>
+                                    <tr>
+                                        <td><%= student.name %></td>
+                                        <% if schedule %>
+                                            <td><%= Course.find(schedule.first_course_id).title unless schedule.first_course_id.nil? %></td>
+                                            <td><%= Course.find(schedule.second_course_id).title unless schedule.second_course_id.nil? %></td>
+                                            <td><%= Course.find(schedule.third_course_id).title unless schedule.third_course_id.nil?  %></td>
+                                            <td><%= link_to "Delete", schedule_path(schedule), method: :delete %></td>
+                                        <% else %>
+                                            <td></td><td></td><td></td>
+                                            <td><%= link_to "Select Classes", new_schedule_path %></td> 
+                                        <% end %>  
+                                    </tr>
+                                <% end %>
+                            <% end %>
                         </tr>
                     </tbody>
                 </table>
@@ -86,17 +96,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% current_user.courses.each do |course| %>
-                            <tr>
-                                <td><%= course.title %> </td> 
-                                <td><%=course.age_group %> </td>
-                                <td><%= course.time_block %> </td>
-                                <td><%= link_to 'Class Roster', course %></td>
-                                <td><%= link_to "Edit", edit_course_path(course) %> | <%= link_to 'Delete', course, method: :delete %> </td>
-                            </tr>
-                        <% end %>
+                        <tr>
+                            <% if current_user.courses.empty? %>
+                                <td>(No Classes)</td><td></td><td></td><td></td><td></td>
+                            <% else %>
+                                <% current_user.courses.each do |course|  %>
+                                    <td><%= course.title %> </td> 
+                                    <td><%=course.age_group %> </td>
+                                    <td><%= course.time_block %> </td>
+                                    <td><%= link_to 'Class Roster', course %></td>
+                                    <td><%= link_to "Edit", edit_course_path(course) %> | <%= link_to 'Delete', course, method: :delete %> </td>
+                                <% end %>
+                            <% end %>
+                        </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12 instructions">
+                <h4>Instructions</h4>
+                Start by adding Students to your Account by following the 'Add Students' link. 
+                You can then go to Student Schedules and follow the 'Select Classes' link to register for classes. The Classes 
+                you are signed up to teach are displayed in the Teaching Table.
             </div>
         </div>
     </div>

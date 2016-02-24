@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = current_user
     @students = Student.where(user_id: @user.id)
   end
+
   
   def edit
     @user = current_user
