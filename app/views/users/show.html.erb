@@ -24,14 +24,18 @@
                         </tr>
                     </thead> 
                     <tbody>
-                        <tr>
+                        
                         <% if @user.students.empty? %>
+                        <tr>
                             <td>(No students)</td><td></td><td></td>
+                        <tr>
                         <% else %>
                             <% @user.students.each do |student| %>
+                            <tr>
                                 <td><%= student.name %></td> 
                                 <td><%= student.age %></td>
                                 <td><%= link_to "Edit", edit_user_path(current_user) %> </td>
+                            </tr>
                             <% end %>
                             </tr>
                         <% end %>
