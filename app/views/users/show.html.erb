@@ -103,7 +103,7 @@
                     <tbody>
                         <tr>
                             <% if current_user.courses.empty? %>
-                                <td>(No Classes)</td><td></td><td></td><td></td><td></td>
+                                <td>(No Classes)</td><td></td><td></td><td></td><td></td><td></td>
                             <% else %>
                                 <% current_user.courses.each do |course|  %>
                                     <td><%= course.title %> </td> 
