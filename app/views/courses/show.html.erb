@@ -6,11 +6,12 @@
 
 <div class="row" >
   <div class='panel-body'>
-    <p><strong>Instructor: </strong><%= @course.user.name %></p>
+    <p><strong>Teacher: </strong><%= @course.user.name %></p>
+    <p><strong>Guest Teacher: </strong><%= @course.guest_teacher %></p>
     <p><strong>Description: </strong><%= @course.description %></p>
-    <p><strong>Time block: </strong><%= @course.time_block %></p>
-    <p><strong>Age group: </strong><%= @course.age_group %></p>
-    <p><strong>Max students: </strong><%= @course.max_students %></p>
+    <p><strong>Time Block: </strong><%= @course.time_block %></p>
+    <p><strong>Age Group: </strong><%= @course.age_group %></p>
+    <p><strong>Max Students: </strong><%= @course.max_students %></p>
     <p><strong>Room: </strong><%= @course.room %></p>
     <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p>
     <p><strong>Class Roster: </strong>

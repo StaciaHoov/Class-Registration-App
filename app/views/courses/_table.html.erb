@@ -7,7 +7,8 @@
         <tr>
           <th>Time Block</th>
           <th>Title</th>
-          <th>Instructor</th>
+          <th>Teacher</th>
+          <th>Guest Teacher</th>
           <th>Age</th>
           <th>Max Students</th>
           <th>Fee</th>
@@ -21,11 +22,12 @@
             <td><%= best_in_place course, :time_block, :as => :select, :collection => ["1", "2", "3"] %></td>
             <td><%= best_in_place course, :title, :as => :input %></td>
             <td><%= course.user.name %></td>
+            <td><%= course.guest_teacher %></td>
             <td><%= course.age_group %></td>
             <td><%= course.max_students %></td>
             <td><%= number_to_currency(course.fee) %></td>
             <td><%= course.room %></td>
-            <td><%= course.description %><%= link_to ' >More', course %></td>
+            <td><%= course.description %><%= link_to ' > more', course %></td>
           </tr>
         <% end %>
       </tbody>

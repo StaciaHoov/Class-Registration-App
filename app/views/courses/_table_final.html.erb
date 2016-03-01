@@ -7,7 +7,8 @@
         <tr>
           <th>Time Block</th>
           <th>Title</th>
-          <th>Instructor</th>
+          <th>Teacher</th>
+          <th>Guest Teacher</th>
           <th>Age</th>
           <th>Max Students</th>
           <th>Openings</th>
@@ -22,6 +23,7 @@
             <td><%= course.time_block %></td>
             <td><%= course.title %></td>
             <td><%= course.user.name %></td>
+            <td><%= course.guest_teacher %></td>
             <td><%= course.age_group %></td>
             <td><%= course.max_students %></td>
             <td><% if course.max_students <= course.seats_taken %>
@@ -31,7 +33,7 @@
                 <% end %></td>
             <td><%= number_to_currency(course.fee) %></td>
             <td><%= course.room %></td>
-            <td><%= course.description %><%= link_to ' >More', course %></td>
+            <td><%= course.description %><%= link_to ' > more', course %></td>
           </tr>
         <% end %>
       </tbody>

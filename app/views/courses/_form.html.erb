@@ -12,13 +12,16 @@
     </div>
     
     <div class="row">
-      <div class="col-md-4">
-        <%= f.association :user, label: "Instructor" %>
+      <div class="col-md-3">
+        <%= f.association :user, label: "Teacher" %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
+        <%= f.input :guest_teacher, label: "Guest Teacher" %>
+      </div>
+      <div class="col-md-3">
          <%= f.input :max_students, collection: 1..30 %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <%= f.input :fee, as: :currency %>
       </div>
     </div>
