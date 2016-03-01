@@ -19,7 +19,7 @@
       <tbody>
         <% collection.each do |course| %>
           <tr>
-            <td><%= best_in_place course, :time_block, :as => :select, :collection => ["1", "2", "3"] %></td>
+            <td><%= best_in_place course, :time_block, :as => :select, :collection => ["Undecided","1", "2", "3"] %></td>
             <td><%= best_in_place course, :title, :as => :input %></td>
             <td><%= course.user.name %></td>
             <td><%= course.guest_teacher %></td>
