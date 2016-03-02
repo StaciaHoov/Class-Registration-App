@@ -27,7 +27,7 @@
             <td><%= course.max_students %></td>
             <td><%= number_to_currency(course.fee) %></td>
             <td><%= course.room %></td>
-            <td><%= course.description %><%= link_to ' > more', course %></td>
+            <td><%= course.description %><%= link_to ' >view/edit course', course %></td>
           </tr>
         <% end %>
       </tbody>
