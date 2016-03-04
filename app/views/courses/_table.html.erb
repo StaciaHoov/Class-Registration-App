@@ -28,10 +28,12 @@
             <td><%= course.max_students %></td>
             <td><%= number_to_currency(course.fee) %></td>
             <td><%= course.room %></td>
-            <td><%= course.description.slice!(0, 90) %><small><%= link_to '...View/Edit class', course %></small></td>
+            <td><%= course.description %></td>
             <td><% if course.note %>
-                  <%= course.note.slice!(0, 90) %><small><%= link_to '...View/Edit class', course %></small>
-                  <% end %>
+                  <%= course.note %><small><%= link_to '...View/Edit class', course %></small>
+                <% else %>
+                  <small><%= link_to '...View/Edit class', course %></small>
+                <% end %>
             </td>
           </tr>
         <% end %>

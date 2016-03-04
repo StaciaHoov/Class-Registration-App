@@ -1,20 +1,24 @@
 <%= simple_form_for(@course) do |f| %>
   <%= f.error_notification %>
-  <div class="instructions">
-    <h4>Instructions</h4>
-      <b>Description -</b> A brief description of the class content including skill level and whether parental oversite is required. </br>
-       <b>Max students -</b> This number will control how many students can sign up for a class before the 
-       class is closed to registration. Once full, students can put 
-       their name on a waiting list in case a spot opens up.</br>
-       <b>Age group -</b> This is the general target group. Parents can decide if 
-      the course is suitable for their child(ren).</br>
-      <b>Time block & Room - </b> Unless otherwise indicated (such as in Admin Notes below), room and times are 
-      preferences. They may need to be changed during the planning 
-      stage.The goal is to provide two choices to each age group per time block.</br>
-      <b>Administrative Notes -</b> Provide other important information regarding accomodations for the class including other 
-      space preferences and whether time block and student limits are flexible.
- </div>
-
+  <div class="row">
+    <div class="col-md-12">
+       <div class="instructions">
+          <h4>Instructions</h4>
+          <b>Description -</b> A brief description of the class content including skill level and whether parental oversite is required. </br>
+           <b>Max students -</b> This number will control how many students can sign up for a class before the 
+           class is closed to registration. Once full, students can put 
+           their name on a waiting list in case a spot opens up.</br>
+           <b>Age group -</b> This is the general target group. Parents can decide if 
+          the course is suitable for their child(ren).</br>
+          <b>Time block & Room - </b> Unless otherwise indicated (such as in Admin Notes below), room and times are 
+          preferences. They may need to be changed during the planning 
+          stage.The goal is to provide two choices to each age group per time block.</br>
+          <b>Administrative Notes -</b> Provide other important information regarding accomodations for the class including other 
+          space preferences and whether time block and student limits are flexible.
+       </div>
+    </div>
+  </div>
+ 
   <div class="form-inputs">
     <div class="row">
       <div class="col-md-6">
