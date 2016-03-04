@@ -1,23 +1,38 @@
 <%= simple_form_for(@course) do |f| %>
   <%= f.error_notification %>
+  <div class="instructions">
+    <h4>Instructions</h4>
+      <b>Description -</b> A brief description of the class content including skill level and whether parental oversite is required. </br>
+       <b>Max students -</b> This number will control how many students can sign up for a class before the 
+       class is closed to registration. Once full, students can put 
+       their name on a waiting list in case a spot opens up.</br>
+       <b>Age group -</b> This is the general target group. Parents can decide if 
+      the course is suitable for their child(ren).</br>
+      <b>Time block & Room - </b> Unless otherwise indicated (such as in Admin Notes below), room and times are 
+      preferences. They may need to be changed during the planning 
+      stage.The goal is to provide two choices to each age group per time block.</br>
+      <b>Administrative Notes -</b> Provide other important information regarding accomodations for the class including other 
+      space preferences and whether time block and student limits are flexible.
+ </div>
 
   <div class="form-inputs">
     <div class="row">
       <div class="col-md-6">
         <%= f.input :title %>
       </div>
-      <div class="col-md-6">
-        <%= f.input :description %>
-      </div>
-    </div>
-    
-    <div class="row">
       <div class="col-md-3">
         <%= f.association :user, label: "Teacher" %>
       </div>
       <div class="col-md-3">
         <%= f.input :guest_teacher, label: "Guest Teacher" %>
       </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :description, label: "Class Description", as: :text %>
+      </div>
+
       <div class="col-md-3">
          <%= f.input :max_students, collection: 1..30 %>
       </div>
@@ -25,6 +40,7 @@
         <%= f.input :fee, as: :currency %>
       </div>
     </div>
+    
     <div class="row">
       <div class="col-md-4">
         <%= f.input :age_group, collection: ['Tiny', 'Small', 'Medium', 'Big', 'Adult', 'All'], as: :radio_buttons %></br>
@@ -33,23 +49,23 @@
         <%= f.input :time_block, collection: [['1'],['2'], ['3'], ['0', 'No preference']], :label_method => :last, :value_method => :first,  as: :radio_buttons  %>
       </div>
       <div class="col-md-4">
-        <%= f.input :room, collection: ['Kitchen', 'Outdoor', 'Common', 'Lounge', 'Nursery', 'Offsite', 'Other'], as: :radio_buttons %></br>
+        <%= f.input :room, collection: ['Kitchen', 'Outdoor', 'Common', 'Lounge', 'Nursery', 'Offsite', 'Other'], as: :radio_buttons %>
       </div>
     </div>
-  <div class="form-actions">
-    <%= f.button :submit, label: 'Update Class', class: 'btn btn-primary' %>
-  </div><br>
-<% end %>
-<div class="row">
-    <div class="col-md-12 instructions">
-      <h4>Instructions</h4>
-      <b>Description -</b> In addition to a brief description of content, please include information on skill level, materials, offsite location 
-       or if parental oversite is required.</br>
-       <b>Max students -</b> This number will control how many students can sign up for a class before the class is closed to registration. Once full, students can put 
-       their name on a waiting list in case a spot opens up.</br>
-       <b>Age group -</b> This is the general target group. Parents can decide if 
-      the course is suitable for their child(ren).</br>
-      <b>Time block & Room - </b> Unless otherwise communicated to the Academic Group, room and times are preferences. They may need to be changed during the planning 
-      stage.The goal is to provide two choices to each age group per time block.</br>
+      
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.input :note, label: "Admin Notes", as: :text %>
+      </div>
     </div>
-</div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-actions">
+          <%= f.button :submit, label: 'Update Class', class: 'btn btn-primary' %></br>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+    
+

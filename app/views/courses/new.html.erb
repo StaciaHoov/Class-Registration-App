@@ -1,15 +1,11 @@
 <div class='panel panel-default'>
     <div class='panel-heading'>
         <h1>Add Class</h1>
-        <p></p>
     </div>
+
     <div class='panel-body'>
-        <div class='row'>
-           <div class='col-md-12' >
-                <%= render partial: 'form', locals: { course: @course } %>
-            </div>
-        </div>
-        <%= link_to 'Back to Proposed Classes', courses_planning_path %>
+        <%= render partial: 'form', locals: { course: @course } %>
+        <%= link_to 'Back', courses_planning_path %>
     </div>
 </div>
 

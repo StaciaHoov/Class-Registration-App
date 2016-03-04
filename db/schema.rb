@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301000619) do
+ActiveRecord::Schema.define(version: 20160303230116) do
 
   create_table "courses", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160301000619) do
     t.integer  "seats_taken",                            default: 0
     t.string   "room"
     t.string   "guest_teacher"
+    t.string   "note"
   end
 
   create_table "schedules", force: :cascade do |t|

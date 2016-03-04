@@ -14,6 +14,7 @@
     <p><strong>Max Students: </strong><%= @course.max_students %></p>
     <p><strong>Room: </strong><%= @course.room %></p>
     <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p>
+    <p><strong>Additional Notes: </strong><%= @course.note %></p>
     <p><strong>Class Roster: </strong>
       <ul class='list-unstyled'>
         <% @schedules_with_course.each do |schedule| %>
@@ -25,11 +26,9 @@
 
 </div>
 
-<% if current_user %>
-  <p><strong>Remove Class?</strong>
-    <%= link_to 'Delete', [@course], method: :delete %>
-  </p><br>
-  <%= link_to 'Edit', edit_course_path(@course) %> |
-<% end %>
 
-<%= link_to 'Class List', courses_path %> 
+<p><strong>Remove Class?</strong>
+  <%= link_to 'Delete', [@course], method: :delete %>
+</p><br>
+<%= link_to 'Edit Class', edit_course_path(@course) %> | 
+<%= link_to 'Return to Class List', courses_path %> 
