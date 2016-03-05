@@ -5,68 +5,52 @@
             <th>First Block</th>
             <th>Age</th>
             <th>Status</th>
-            <th>Details</th>
             <th>Wait list</th>
         </tr>
         <% Course.where(time_block: 1).each do |course| %>
         <tr>
-            <td><%= course.title %></td>
+            <td><%= course.title %><small><%= link_to ' > class info', course %></small></td>
             <td><%= course.age_group %></td>
-            <td><% if course.max_students > course.seats_taken  %>
-                    <small>Open (<%= course.max_students - course.seats_taken %> seats)</small>
-                <% else %>
-                    <small style="color:red">FULL</small>
-                <% end %>
-            </td>
-            <td><%= link_to 'Details', course %></td>
-            <% if course.course_full = true %>
-                <td><%= link_to "get on list", new_wait_path(course) %></td>
-            <% else %>
+            <% if course.max_students > course.seats_taken  %>
+                <td><small>Open (<%= course.max_students - course.seats_taken %> seats)</small></td>
                 <td></td>
+            <% else %>
+                <td><small style="color:red">FULL</small></td>
+                <td><%= link_to "Wait list", new_wait_path(course) %></td>
             <% end %>
         </tr>
         <% end %>
         
         <tr>
-            <th>Second Block</th><th></th><th></th><th></th><th></th>
+            <th>Second Block</th><th></th><th></th><th></th>
         </tr>
         <% Course.where(time_block: 2).each do |course| %>
-        <tr>
-            <td><%= course.title %></td>
-            <td><%= course.age_group %></td>
-            <td><% if course.max_students > course.seats_taken  %>
-                    <small>Open (<%= course.max_students - course.seats_taken %> seats)</small>
+            <tr>
+                <td><%= course.title %><small><%= link_to ' > class info', course %></small></td>
+                <td><%= course.age_group %></td>
+                <% if course.max_students > course.seats_taken  %>
+                    <td><small>Open (<%= course.max_students - course.seats_taken %> seats)</small></td>
+                    <td></td>
                 <% else %>
-                    <small style="color:red">FULL</small>
+                    <td><small style="color:red">FULL</small></td>
+                    <td><%= link_to "Wait list", new_wait_path(course) %></td>
                 <% end %>
-            </td>
-            <td><%= link_to 'Details', course %></td>
-            <% if course.course_full = true %>
-                <td><%= link_to "get on list", new_wait_path(course) %></td>
-            <% else %>
-                <td></td>
-            <% end %>
-        </tr>
+            </tr>
         <% end %>
         
         <tr>
-            <th>Third Block</th><th></th><th></th><th></th><th></th>
+            <th>Third Block</th><th></th><th></th><th></th>
         </tr>
         <% Course.where(time_block: 3).each do |course| %>
             <tr>
-                <td><%= course.title %></td>
+                <td><%= course.title %><small><%= link_to ' > class info', course %></small></td>
                 <td><%= course.age_group %></td>
-                <td><% if course.max_students > course.seats_taken  %>
-                    <small>Open (<%= course.max_students - course.seats_taken %> seats)</small>
-                <% else %>
-                    <small style="color:red">FULL</small>
-                <% end %>
-                </td>
-                <td><%= link_to 'Details', course %></td>
-                <% if course.course_full = true %>
-                    <td><%= link_to "get on list", new_wait_path(course) %></td>
-                <% else %>
+                <% if course.max_students > course.seats_taken  %>
+                    <td><small>Open (<%= course.max_students - course.seats_taken %> seats)</small></td>
                     <td></td>
+                <% else %>
+                    <td><small style="color:red">FULL</small></td>
+                    <td><%= link_to "Wait list", new_wait_path(course) %></td>
                 <% end %>
             </tr>
         <% end %>

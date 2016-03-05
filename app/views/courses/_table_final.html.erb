@@ -27,7 +27,7 @@
             <td><%= course.age_group %></td>
             <td><%= course.max_students %></td>
             <td><% if course.max_students <= course.seats_taken %>
-                  <small>Class Full <%=link_to 'Waiting list?' %></small>
+                  <small style="color:red"> Full <br><%=link_to ' Waiting list?', new_wait_path %></small>
                 <% else %>
                   <%= course.max_students - course.seats_taken %>
                 <% end %></td>

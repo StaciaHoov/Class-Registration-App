@@ -4,26 +4,42 @@
     <p><h2>Title:  <%= @course.title %></h2></p>
   </div>
 
-<div class="row" >
-  <div class='panel-body'>
-    <p><strong>Teacher: </strong><%= @course.user.name %></p>
-    <p><strong>Guest Teacher: </strong><%= @course.guest_teacher %></p>
-    <p><strong>Description: </strong><%= @course.description %></p>
-    <p><strong>Time Block: </strong><%= @course.time_block %></p>
-    <p><strong>Age Group: </strong><%= @course.age_group %></p>
-    <p><strong>Max Students: </strong><%= @course.max_students %></p>
-    <p><strong>Room: </strong><%= @course.room %></p>
-    <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p>
-    <p><strong>Additional Notes: </strong><%= @course.note %></p>
-    <p><strong>Class Roster: </strong>
-      <ul class='list-unstyled'>
-        <% @schedules_with_course.each do |schedule| %>
-          <li><%= schedule.student.name %></li>
-        <% end %>
-      </ul>
-    </p>
-  </div>
 
+<div class='panel-body'>
+  <div class="row" >
+    <div class="col-md-12">
+      <p><strong>Teacher: </strong><%= @course.user.name %></p>
+      <p><strong>Guest Teacher: </strong><%= @course.guest_teacher %></p>
+      <p><strong>Description: </strong><%= @course.description %></p>
+      <p><strong>Time Block: </strong><%= @course.time_block %></p>
+      <p><strong>Age Group: </strong><%= @course.age_group %></p>
+      <p><strong>Max Students: </strong><%= @course.max_students %></p>
+      <p><strong>Room: </strong><%= @course.room %></p>
+      <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p>
+      <p><strong>Additional Notes: </strong><%= @course.note %></p>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Class Roster: </strong>
+        <ol>
+          <% @schedules_with_course.each do |schedule| %>
+            <li><%= schedule.student.name %></li>
+          <% end %>
+        </ol>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>Waiting List: </strong>
+          <ol>
+            <% @course.waits.each do |wait| %>
+              <li><%= wait.student.name %>  <small>(<%= link_to "remove", wait_path(wait), method: :delete %></small>)</li>
+            <% end %>
+          </ol> 
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 

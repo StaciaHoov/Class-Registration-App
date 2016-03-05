@@ -56,6 +56,7 @@
                             <th>Second Block</th>
                             <th>Third Block </th>
                             <th>Change Schedule?</th>
+                            <th>Wait List</th>
                         </tr>
                     </head>
                     <tbody>
@@ -75,8 +76,14 @@
                                             <td><%= link_to "Delete", schedule_path(schedule), method: :delete %></td>
                                         <% else %>
                                             <td></td><td></td><td></td>
-                                            <td><% link_to "Select Classes", new_schedule_path %></td> 
+                                            <td><%= link_to "Select Classes", new_schedule_path %></td> 
                                         <% end %>  
+                                         <td><% if student.waits.any? %>
+                                                <% student.waits.each do |wait| %>
+                                                    <ul><li><%= wait.course.title %><small><%= link_to " (remove)", wait_path(wait), method: :delete %></small></li></ul>
+                                                <% end %>
+                                            <% end %>
+                                        </td>
                                     </tr>
                                 <% end %>
                             <% end %>

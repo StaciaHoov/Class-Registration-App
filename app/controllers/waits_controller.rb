@@ -1,7 +1,6 @@
 class WaitsController < ApplicationController
   def new
     @wait = Wait.new(params[:course_id])
-
   end
 
   def create
@@ -13,10 +12,11 @@ class WaitsController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def destroy
+    @wait = Wait.find(params[:id])
+    if @wait.destroy
+      redirect_to :back
+    end
   end
   
   private

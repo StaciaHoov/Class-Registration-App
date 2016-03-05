@@ -16,8 +16,8 @@
           <li><%= link_to "Class Schedule", courses_path %></li>
   
           <% if current_user %>
-            <li><%= link_to "My Account", user_path(current_user) %></li>
             <li><%= link_to "**Class Planning**", courses_planning_path %></li>
+            <li><%= link_to "My Account", user_path(current_user) %></li>
           <% end %>
           <div class="pull-right user-info">
             <% if current_user %>
