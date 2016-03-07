@@ -1,6 +1,8 @@
 class WaitsController < ApplicationController
   def new
-    @wait = Wait.new(params[:course_id])
+    @students = Student.all
+    @course = Course.find(params[:course_id])
+    @wait = Wait.new
   end
 
   def create

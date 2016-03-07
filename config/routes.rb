@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get 'welcome/about'
   get 'courses/planning'
   resources :students
-  resources :courses
+  resources :courses do 
+    resources :waits
+  end
   resources :enrollments
   resources :schedules
-  resources :waits
 end
