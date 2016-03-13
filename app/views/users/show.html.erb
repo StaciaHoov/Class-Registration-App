@@ -80,9 +80,7 @@
                                         <% end %>  
                                         <td>
                                             <ul>
-                                            <% WaitlistStudent.where(student_id: student.id).each do |studentlist| %>
-                                               <li><%= studentlist.waitlist.course.title %></li>
-                                            <% end %>
+                                            
                                             </ul>
                                         </td>
                                     </tr>
