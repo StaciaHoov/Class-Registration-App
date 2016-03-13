@@ -1,7 +1,7 @@
 class Course < ActiveRecord::Base
     belongs_to :user
     has_many :schedules
-    has_many :waits
+    has_one :waitlist, dependent: :destroy
     
     default_scope { order('time_block ASC','age_group DESC') } 
     

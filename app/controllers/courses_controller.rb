@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-
+  
   def index
     courses_by_age
   end
@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @schedules_with_course = Schedule.where(first_course_id:  @course.id) ||
-      Schedule.where(second_course_id:  @course.id) || Schedule.where(third_course_id:  @course.id)
+    Schedule.where(second_course_id:  @course.id) || Schedule.where(third_course_id:  @course.id)
   
     respond_to do |format|
       format.html
@@ -30,6 +30,8 @@ class CoursesController < ApplicationController
   def create 
     @course = Course.new(course_params)
       if @course.save
+        @waitlist = Waitlist.new(course_id: @course.id)
+        @waitlist.save
         redirect_to courses_planning_path
       else
         render :new
@@ -45,7 +47,7 @@ class CoursesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render :action => :edit } #edit.html.erb
+        format.html { render :action => :edit } 
         format.json { render :nothing => true }
       end
     end 
@@ -79,5 +81,4 @@ class CoursesController < ApplicationController
       @big_courses = Course.where(age_group: ['Big', 'All']) 
       @adult_courses = Course.where(age_group: ['Adult', 'All']) 
     end
-      
 end

@@ -32,9 +32,9 @@
       <div class="col-md-6">
         <p><strong>Waiting List: </strong>
           <ol>
-            <% @course.waits.each do |wait| %>
-              <li><%= wait.student.name %>  <small>(<%= link_to "remove", wait_path(wait), method: :delete %></small>)</li>
-            <% end %>
+            <%= @course.waitlist.id if @course.waitlist  %>
+              <li>  <small>(<%= link_to "remove",  method: :delete %></small>)</li>
+            
           </ol> 
         </p>
       </div>

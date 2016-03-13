@@ -1,22 +1,46 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.jumbotron, .group_heading {
+.jumbotron {
+    padding-top: 10px;
+    text-align: center;
+    border: 1px solid #e07e33;
+    box-shadow: 10px 10px 5px #505050;
+}
+
+
+.jumbotron h1 {
+  margin-bottom: 50px;
+  font-size: 45px;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-family: 'Bubblegum Sans', cursive, 'Montserrat', sans-serif;
+  box-shadow: 5px 5px 5px #505050;
+  text-align: center;
+  background-color: #c6c6c6;
+}
+
+.jumbotron #who {
+    font-size: 55px;
+}
+
+.jumbotron h2 {
+    font-size: 20px;
     text-align: center;
 }
 
-.jumbotron h1 {
-  font-size: 40px;
-  padding: 30px 60px;
-  border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
+
+.jumbotron p {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
 }
+
 .welcome-content {
     text-align: center;
 }
 
-.welcome-content h2{
-    text-align: center;
-}
 
 

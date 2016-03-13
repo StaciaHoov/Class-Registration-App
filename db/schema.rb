@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303230116) do
+ActiveRecord::Schema.define(version: 20160309005142) do
 
   create_table "courses", force: :cascade do |t|
     t.integer  "user_id"
@@ -74,11 +74,18 @@ ActiveRecord::Schema.define(version: 20160303230116) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "waits", force: :cascade do |t|
+  create_table "waitlist_students", force: :cascade do |t|
     t.integer  "student_id"
+    t.string   "waitlist_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "waitlists", force: :cascade do |t|
     t.integer  "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "waitlist_student_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
 end
