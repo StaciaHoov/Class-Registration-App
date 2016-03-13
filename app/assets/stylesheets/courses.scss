@@ -1,9 +1,13 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h2, .h2 {
-  font-size: 30px;
-  text-align:left;
+.jumbotron .age_group {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: left;
+  text-transform: uppercase;
+  border: 1px #ccc;	
+  border-bottom-style:solid;
 }
 
 .panel-body {

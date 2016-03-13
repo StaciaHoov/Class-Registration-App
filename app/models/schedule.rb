@@ -28,6 +28,4 @@ class Schedule < ActiveRecord::Base
         @course_second_block = Course.where(id: self.second_course_id).last
         @course_third_block = Course.where(id: self.third_course_id).last 
     end
-    
-    
 end

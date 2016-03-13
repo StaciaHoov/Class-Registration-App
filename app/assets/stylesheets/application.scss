@@ -37,27 +37,21 @@
     background-color: rgba(236, 122, 9, 0.5);
 }
 
-
-
-
-.jumbotron p {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 24px;
+.nav > li > a {
+    color: #222222;
+    font-size:1.75 rem;
+    letter-spacing: 0.0rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer
 }
-
-.group_heading {
-    font-size: 72px;
-    margin-bottom: 60px;
-}
-
 .container {
     width: 97%;
 }
 
 .jumbotron {
     background-color: rgba(236, 122, 9, 0.50);
-
 }
 
 .instructions {

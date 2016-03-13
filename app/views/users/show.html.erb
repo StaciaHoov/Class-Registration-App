@@ -78,11 +78,8 @@
                                             <td></td><td></td><td></td>
                                             <td><%= link_to "Select Classes", new_schedule_path %></td> 
                                         <% end %>  
-                                         <td><% if student.waits.any? %>
-                                                <% student.waits.each do |wait| %>
-                                                    <ul><li><%= wait.course.title %><small><%= link_to " (remove)", course_wait_path(wait.course, wait), method: :delete %></small></li></ul>
-                                                <% end %>
-                                            <% end %>
+                                         <td><% %>
+                                       
                                         </td>
                                     </tr>
                                 <% end %>

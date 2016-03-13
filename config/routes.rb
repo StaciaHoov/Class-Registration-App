@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get 'welcome/about'
   get 'courses/planning'
   resources :students
-  resources :courses do 
-    resources :waits
-  end
-  resources :enrollments
+  resources :courses
   resources :schedules
+  resources :waitlists
+  get '/waitlist_student/:waitlist_id', to:'waitlist_students#new', as: 'new_waitlist_student'
+  resources :waitlist_students, only: [:create, :edit, :update, :show]
 end

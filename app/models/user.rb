@@ -7,10 +7,9 @@ class User < ActiveRecord::Base
   has_many :students, dependent: :destroy
   accepts_nested_attributes_for :students, reject_if: :all_blank, allow_destroy: true
   has_many :courses
+  has_many :waitlist_students, through: :students
   
   def admin?
     role == 'admin'
   end
-  
-
 end
