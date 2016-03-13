@@ -12,7 +12,6 @@
             <td><%= course.age_group %></td>
             <% if course.max_students > course.seats_taken  %>
                 <td><small>Open (<%= course.max_students - course.seats_taken %> seats)</small></td>
-                <td></td>
             <% else %>
                 <td><small style="color:red">FULL</small></td>
             <% end %>

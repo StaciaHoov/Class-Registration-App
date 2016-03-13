@@ -6,7 +6,7 @@
         <div class= "col-md-6 col-md-offset-3">
             <%= simple_form_for(@waitlist_student) do |f| %>
                 <%= f.input :student_id, label: "Student", :collection => @user.students %>
-                <%= f.text_field :waitlist_id, :value => params[:waitlist_id] %>
+                <% f.text_field :waitlist_id, :value => params[:waitlist_id] %>
                 <%= f.button :submit, "Add Student to List", class: 'btn btn-primary btn-sm' %>
             <% end %>
         </div>
