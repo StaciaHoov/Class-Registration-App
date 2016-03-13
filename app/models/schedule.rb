@@ -11,7 +11,6 @@ class Schedule < ActiveRecord::Base
         @course_first_block.downcount_seats if @course_first_block
         @course_second_block.downcount_seats if @course_second_block
         @course_third_block.downcount_seats if @course_third_block
-
     end
         
     def reset_course_full

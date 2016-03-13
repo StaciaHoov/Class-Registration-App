@@ -1,7 +1,7 @@
 class Course < ActiveRecord::Base
     belongs_to :user
-    has_many :schedules
     has_one :waitlist, dependent: :destroy
+    has_many :waitlist_students, through: :waitlist, dependent: :destroy
     
     default_scope { order('time_block ASC','age_group DESC') } 
     
@@ -11,6 +11,25 @@ class Course < ActiveRecord::Base
     validates :max_students, presence: true
     validates :time_block, presence: true
     
+    before_destroy :delete_schedules
+    
+    def delete_schedules
+        schedule_first_course = Schedule.where(first_course_id: self.id) 
+        schedule_second_course = Schedule.where(second_course_id: self.id) 
+        schedule_third_course = Schedule.where(third_course_id: self.id) 
+        
+        if schedule_first_course.any?
+            schedule_first_course.delete_all
+        end
+        
+        if schedule_second_course.any?
+            schedule_second_course.delete_all
+        end
+        
+        if schedule_third_course.any?
+            schedule_third_course.delete_all
+        end
+    end
     
     def upcount_seats
         self.increment!(:seats_taken)

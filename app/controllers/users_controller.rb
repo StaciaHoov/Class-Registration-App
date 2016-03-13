@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "There was a problem updating your account."
     end
-    redirect_to user_path(current_user)
+    redirect_to user_path(@user)
   end
   
   private
