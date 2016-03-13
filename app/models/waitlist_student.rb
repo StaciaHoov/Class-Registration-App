@@ -5,5 +5,4 @@ class WaitlistStudent < ActiveRecord::Base
     validates :student_id, presence: true
     validates :waitlist_id, presence: true
     validates_uniqueness_of :student_id, :scope => :waitlist_id
-    
 end

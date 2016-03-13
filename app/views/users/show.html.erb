@@ -78,8 +78,12 @@
                                             <td></td><td></td><td></td>
                                             <td><%= link_to "Select Classes", new_schedule_path %></td> 
                                         <% end %>  
-                                         <td><% %>
-                                       
+                                        <td>
+                                            <ul>
+                                            <% WaitlistStudent.where(student_id: student.id).each do |studentlist| %>
+                                               <li><%= studentlist.waitlist.course.title %></li>
+                                            <% end %>
+                                            </ul>
                                         </td>
                                     </tr>
                                 <% end %>

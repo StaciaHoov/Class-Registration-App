@@ -22,7 +22,11 @@ class Course < ActiveRecord::Base
         check_full
     end
       
-        
+    def students_waiting
+        list = self.waitlist
+        WaitlistStudent.where(waitlist_id: list.id)
+    end
+    
     private
     
     def check_full

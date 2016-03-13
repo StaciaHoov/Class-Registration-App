@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :schedules
   resources :waitlists
   get '/waitlist_student/:waitlist_id', to:'waitlist_students#new', as: 'new_waitlist_student'
-  resources :waitlist_students, only: [:create, :edit, :update, :show]
+  resources :waitlist_students, only: [:create, :destroy]
 end

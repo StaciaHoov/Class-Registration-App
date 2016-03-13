@@ -17,11 +17,14 @@ class WaitlistStudentsController < ApplicationController
     end
   end
 
-  def edit
-   
-  end
-
   def destroy
+    @waitlist_student = WaitlistStudent.find(params[:id])
+    if @waitlist_student.destroy
+      flash[:notice] = "Student removed from waitlist"
+      redirect_to courses_path
+    else
+      flash[:error] = "There was a problem removing student from list"
+    end
   end
   
   private

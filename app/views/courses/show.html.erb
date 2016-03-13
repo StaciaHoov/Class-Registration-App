@@ -1,50 +1,52 @@
 <p id="notice"><%= notice %></p>
 <div class='panel panel-default'>
   <div class='panel-heading'>
-    <p><h2>Title:  <%= @course.title %></h2></p>
+    <h1><%= @course.title %></h1>
   </div>
 
 
-<div class='panel-body'>
-  <div class="row" >
-    <div class="col-md-12">
+<div class='panel-body waitlist'>
+  <div class="row">
+    <div class="col-md-4">
       <p><strong>Teacher: </strong><%= @course.user.name %></p>
       <p><strong>Guest Teacher: </strong><%= @course.guest_teacher %></p>
-      <p><strong>Description: </strong><%= @course.description %></p>
       <p><strong>Time Block: </strong><%= @course.time_block %></p>
       <p><strong>Age Group: </strong><%= @course.age_group %></p>
       <p><strong>Max Students: </strong><%= @course.max_students %></p>
       <p><strong>Room: </strong><%= @course.room %></p>
-      <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p>
+      <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p> 
+    </div>
+    <div class="col-md-8">
+      <p><strong>Description: </strong><%= @course.description %></p>
       <p><strong>Additional Notes: </strong><%= @course.note %></p>
     </div>
   </div>
-    <div class="row">
-      <div class="col-md-6">
-        <p><strong>Class Roster: </strong>
+  <div class="row course_show_lists">
+    <div class="col-md-4">
+      <p><strong>Class Roster: </strong>
+      <ol>
+        <% @schedules_with_course.each do |schedule| %>
+          <li><%= schedule.student.name %></li>
+        <% end %>
+      </ol>
+      </p>
+    </div>
+    <div class="col-md-4">
+      <p><strong>Waiting List: </strong>
         <ol>
-          <% @schedules_with_course.each do |schedule| %>
-            <li><%= schedule.student.name %></li>
+          <% @course.students_waiting.each do |waiting_student| %>
+            <li><%= waiting_student.student.name %>
+            <small> (<%= link_to "remove", waitlist_student_path(waiting_student), method: :delete %></small>)</li>
           <% end %>
-        </ol>
-        </p>
-      </div>
-      <div class="col-md-6">
-        <p><strong>Waiting List: </strong>
-          <ol>
-            <%= @course.waitlist.id if @course.waitlist  %>
-              <li>  <small>(<%= link_to "remove",  method: :delete %></small>)</li>
-            
-          </ol> 
-        </p>
-      </div>
+        </ol> 
+      </p>
     </div>
   </div>
 </div>
 
 
-<p><strong>Remove Class?</strong>
+<strong>Remove Class?</strong>
   <%= link_to 'Delete', [@course], method: :delete %>
-</p><br>
+<br>
 <%= link_to 'Edit Class', edit_course_path(@course) %> | 
 <%= link_to 'Return to Class List', courses_path %> 
