@@ -14,7 +14,7 @@
             <td><% if @course.user == nil %> 
                   undecided 
                 <% else %>
-                  <%= course.user.name %>
+                  <%= @course.user.name %>
                 <% end %></td>
           </tr>
           <tr>
