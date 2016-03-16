@@ -8,14 +8,44 @@
 <div class='panel-body waitlist'>
   <div class="row">
     <div class="col-md-4">
-      <p><strong>Teacher: </strong><%= @course.user.name %></p>
-      <p><strong>Guest Teacher: </strong><%= @course.guest_teacher %></p>
-      <p><strong>Time Block: </strong><%= @course.time_block %></p>
-      <p><strong>Age Group: </strong><%= @course.age_group %></p>
-      <p><strong>Max Students: </strong><%= @course.max_students %></p>
-      <p><strong>Room: </strong><%= @course.room %></p>
-      <p><strong>Fee: </strong><%= number_to_currency(@course.fee) %></p> 
+      <table id="course_show_table">
+        <tbody>
+          <tr>
+            <th>Teacher:</th>
+            <td><% if @course.user == nil %> 
+                  undecided 
+                <% else %>
+                  <%= course.user.name %>
+                <% end %></td>
+          </tr>
+          <tr>
+            <th>Co-Teacher:</th>
+            <td><%= @course.guest_teacher %></td>
+          </tr>
+          <tr>
+            <th>Time Block:</th>
+            <td><%= @course.time_block %></td>
+          </tr>
+          <tr>
+            <th>Age Group:</th>
+            <td><%= @course.age_group %></td>
+          </tr>
+          <tr>
+            <th>Max Students:</th>
+            <td><%= @course.max_students %></td>
+          </tr>
+          <tr>
+            <th>Room:</th>
+            <td><%= @course.room %></td>
+          </tr>
+          <tr>
+            <th>Fee:</th>
+            <td><%= number_to_currency(@course.fee) %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
     <div class="col-md-8">
       <p><strong>Description: </strong><%= @course.description %></p>
       <p><strong>Additional Notes: </strong><%= @course.note %></p>

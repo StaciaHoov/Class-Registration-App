@@ -8,7 +8,7 @@
           <th>Time Block</th>
           <th>Title</th>
           <th>Teacher</th>
-          <th>Guest Teacher</th>
+          <th>Co-teacher</th>
           <th>Age</th>
           <th>Max Students</th>
           <th>Openings</th>
@@ -22,7 +22,11 @@
           <tr>
             <td><%= course.time_block %></td>
             <td><%= course.title %></td>
-            <td><%= course.user.name %></td>
+            <td><% if course.user == nil %> 
+                      undecided 
+                    <% else %>
+                      <%= course.user.name %>
+                    <% end %></td>
             <td><%= course.guest_teacher %></td>
             <td><%= course.age_group %></td>
             <td><%= course.max_students %></td>

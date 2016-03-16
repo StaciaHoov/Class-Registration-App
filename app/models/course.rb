@@ -6,7 +6,6 @@ class Course < ActiveRecord::Base
     default_scope { order('time_block ASC','age_group DESC') } 
     
     validates :title, length: { maximum: 40 }, presence: true
-    validates :user, presence: true
     validates :age_group, presence: true
     validates :max_students, presence: true
     validates :time_block, presence: true
