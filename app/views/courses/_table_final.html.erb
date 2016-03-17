@@ -31,13 +31,13 @@
             <td><%= course.age_group %></td>
             <td><%= course.max_students %></td>
             <td><% if course.max_students <= course.seats_taken %>
-                  <small style="color:red"> Full <br><%=link_to ' Waiting list?', new_waitlist_student_path(course.waitlist) %></small>
+                  <small style="color:red"> Full - <%=link_to ' Waiting list?', new_waitlist_student_path(course.waitlist) %></small>
                 <% else %>
                   <%= course.max_students - course.seats_taken %>
                 <% end %></td>
             <td><%= number_to_currency(course.fee) %></td>
             <td><%= course.room %></td>
-            <td><%= course.description %><%= link_to ' > more', course %></td>
+            <td><%= course.description %><%= link_to ' > more info', course %></td>
           </tr>
         <% end %>
       </tbody>
