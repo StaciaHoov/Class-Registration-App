@@ -64,7 +64,7 @@
       <p><strong>Waiting List: </strong>
          <ol>
         <% @course.students_waiting.each do |waiting_student| %>
-          <li><%= waiting_student.student.name %><%= waiting_student.id %>
+          <li><%= waiting_student.student.name %>
           <small>(<%= link_to "remove", waitlist_student_path(waiting_student), method: :delete %>)</small></li>
         <% end %>
       </ol>
