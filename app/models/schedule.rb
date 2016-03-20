@@ -2,6 +2,8 @@ class Schedule < ActiveRecord::Base
     belongs_to :student
     has_many :courses 
     
+    validates :student_id, presence: true
+    
     before_destroy :make_course_avail
 
     after_save :reset_course_full 

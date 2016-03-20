@@ -17,7 +17,8 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to user_path(current_user) 
     else
-      render :new
+     flash[:error] = "There was a problem creating that schedule. Please try again." 
+      redirect_to user_path(current_user) 
     end
   end
   
