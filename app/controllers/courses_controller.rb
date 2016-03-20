@@ -12,8 +12,13 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @schedules_with_course = Schedule.where(first_course_id:  @course.id) ||
-    Schedule.where(second_course_id:  @course.id) || Schedule.where(third_course_id:  @course.id)
+    if @course.time_block === '1'
+      @schedules_with_course = Schedule.where(first_course_id:  @course.id)
+    elsif @course.time_block === '2'
+      @schedules_with_course = Schedule.where(second_course_id:  @course.id) 
+    elsif @course.time_block === '3'
+      @schedules_with_course = Schedule.where(third_course_id:  @course.id)
+    end
   
     respond_to do |format|
       format.html
