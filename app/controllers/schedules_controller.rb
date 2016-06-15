@@ -1,11 +1,10 @@
 class SchedulesController < ApplicationController
   
   def new    
-    @courses_first = Course.where(time_block: '1').where(course_full: false)
-    @courses_second = Course.where(time_block: '2').where(course_full: false)
-    @courses_third = Course.where(time_block: '3').where(course_full: false)
+    available_courses
     @schedule = Schedule.new
     @user = current_user
+    authorize @schedule
   end
 
   def show
@@ -14,6 +13,7 @@ class SchedulesController < ApplicationController
   
   def create 
     @schedule = Schedule.new(schedule_params)
+    authorize @schedule
     if @schedule.save
       redirect_to user_path(current_user) 
     else
@@ -24,6 +24,7 @@ class SchedulesController < ApplicationController
   
   def destroy
     @schedule = Schedule.find(params[:id])
+    authorize @schedule
     if @schedule.destroy
       flash[:notice] = "Schedule removed"
     else
@@ -34,10 +35,12 @@ class SchedulesController < ApplicationController
   
   def edit
     @schedule = Schedule.find(params[:id])
+    authorize @schedule
   end
   
   def update
     @schedule = Schedule.find(params[:id])
+    authorize @schedule
     if @schedule.update_attributes(schedule_params)
       flash[:notice] = "Schedule updated."
     else
@@ -53,4 +56,9 @@ class SchedulesController < ApplicationController
     params.require(:schedule).permit(:student_id, :first_course_id, :second_course_id, :third_course_id, :_destroy)
   end
 
+  def available_courses
+      @courses_first = Course.where(time_block: '1', course_full: false)
+      @courses_second = Course.where(time_block: '2', course_full: false)
+      @courses_third = Course.where(time_block: '3', course_full: false)
+  end
 end

@@ -8,6 +8,7 @@ class Schedule < ActiveRecord::Base
 
     after_save :reset_course_full 
     
+    
     def make_course_avail
         course_all_blocks
         @course_first_block.downcount_seats if @course_first_block

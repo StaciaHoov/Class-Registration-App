@@ -3,7 +3,7 @@ class WaitlistStudentsController < ApplicationController
     @user = current_user
     @waitlist = Waitlist.find(params[:waitlist_id])
     @course = @waitlist.course
-    @waitlist_student = WaitlistStudent.new(params.permit(:student_id, :waitlist_id))
+    @waitlist_student = WaitlistStudent.new(waitlist_student_params)
   end
 
   def create

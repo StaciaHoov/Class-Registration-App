@@ -1,14 +1,14 @@
 class StudentsController < ApplicationController
-  def index
-  end
 
   def new
     @student = Student.new
+    authorize @student
   end
 
   def create
     @user = current_user
     @student = @user.students.build(student_params)
+    authorize @student
     
     if @student.save
       flash[:notice] = "Student added to your account."

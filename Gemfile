@@ -30,6 +30,7 @@ gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'best_in_place'
 gem 'rest_in_place'
 gem 'figaro', '1.0'
+gem 'pundit'
 
 
 group :production do
