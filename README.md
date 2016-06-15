@@ -9,17 +9,17 @@ themselves or their children up to take classes.
 ## Features
 * Users can sign up as members. 
 * From the My Account tab, members can:
-    * edit their user information (name, email) from User Information box
-    * add themselves or their children as students from the Student table
-    * sign up their students for classes in the Student Schedules table
-    * view and edit their teaching schedule from the Teaching table
-* Members can sign up to teach a course. Can designate teaching preferences such as room, time, maximum number of students, fee, age-group, and co-teacher.
-* In the Class Planning page, in-place editing is possible to change course time.
+    * edit their user information (name, email) 
+    * add themselves or their children as students
+    * sign up their students for classes
+    * view and edit their teaching schedule 
+* Members can sign up to teach courses, and designate teaching preferences such as room, time, maximum number of students, fee, age-group, and co-teacher.
+* On the Class Planning page, in-place editing is possible to change course time.
 * Courses can be viewed from the Current Class Offerings table, which shows number of openings per course available. As students register a course,
  the Openings field increments down until all seats are taken. Table then displays 'Course Full'.
-* Class Offerings are tabulated by age-group on the same page. Jumping to different tables is possible via anchor links available throughout the page.
+* Class Offerings are tabulated by age-group. Jumping to different tables is possible via anchor links throughout the page.
 * Each table has sortable columns.
-* A class roster of registered students is available from the teacher's profile page and from the course description page.
+* A class roster of registered students is available from the teacher's My Account page and from the course description page.
 
 
 ## Technologies    
