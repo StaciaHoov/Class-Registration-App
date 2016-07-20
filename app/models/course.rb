@@ -11,7 +11,23 @@ class Course < ActiveRecord::Base
     validates :time_block, presence: true
     
     before_destroy :delete_schedules
-
+   
+    def upcount_seats
+        self.increment!(:seats_taken)
+        check_full
+    end
+    
+    def downcount_seats
+        self.decrement!(:seats_taken)
+        check_full
+    end
+      
+      
+    def students_waiting
+        list = self.waitlist
+        WaitlistStudent.where(waitlist_id: list.id)
+    end
+    
     def delete_schedules
         schedule_first_course = Schedule.where(first_course_id: self.id) 
         schedule_second_course = Schedule.where(second_course_id: self.id) 
@@ -28,26 +44,7 @@ class Course < ActiveRecord::Base
         if schedule_third_course.any?
             schedule_third_course.delete_all
         end
-    end
-    
-    
-    def upcount_seats
-        self.increment!(:seats_taken)
-        check_full
-    end
-    
-    
-    def downcount_seats
-        self.decrement!(:seats_taken)
-        check_full
-    end
-      
-      
-    def students_waiting
-        list = self.waitlist
-        WaitlistStudent.where(waitlist_id: list.id)
-    end
-    
+    end    
     
     private
     
