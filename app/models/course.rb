@@ -11,6 +11,13 @@ class Course < ActiveRecord::Base
     validates :time_block, presence: true
     
     before_destroy :delete_schedules
+    
+    
+    def available_courses
+        @courses_first = self.where(time_block: '1', course_full: false)
+        @courses_second = self.where(time_block: '2', course_full: false)
+        @courses_third = self.where(time_block: '3', course_full: false)
+    end
    
     def upcount_seats
         self.increment!(:seats_taken)
